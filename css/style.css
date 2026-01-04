@@ -1,0 +1,89 @@
+:root {
+     --font-main: 'Inter', sans-serif;
+     --color-main: rgb(177, 177, 147);
+     --color-sec: whitesmoke;
+     --color-sec-hover: rgb(228, 228, 228);
+}
+
+
+
+body {
+     display: flex;
+     flex-direction: row;
+     font-family: var(--font-main);
+     background-color: var(--color-main);
+     margin: 0px;
+     overflow: hidden;
+}
+
+
+/* * Style de la Navbar verticale (pour un rendu un peu plus moderne*/
+nav {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     border: 1px black solid;
+     height: 100vh;
+     padding-right: 50px;
+     padding-left: 15px;
+}
+
+.logo { /* Logo */
+     margin-top: 15px;
+     height: 70px;
+     width: auto;
+}
+.buttonadd { /* Le bouton pour ajouter une todo*/
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: xx-large;
+     background-color: var(--color-sec);
+     border-radius: 15px;
+     width: 100px;
+     height: 100px;
+     cursor: pointer;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+.buttonadd:hover { /*Animation de hover pour le bouton*/
+     background-color: var(--color-sec-hover);
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.3);
+     transform: scale(1.1);
+     transition: all 0.2s;
+}
+
+
+/** Partie Display des Todo*/
+
+h1 {
+     margin-left: 15px;
+     font-size: 50px;
+}
+
+
+/** Div de chaque TODO*/
+.todo {
+     background-color: var(--color-sec);
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     border-radius: 15px;
+
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: end;
+     margin-left: 15px;
+     margin-bottom: 15px;
+}
+
+.todo img {
+     align-self: center;
+     height: 40px;
+     width: auto;
+     margin-right: 15px;
+}
+.todo input {
+     margin-left: 15px;
+}
+.todo p {
+     flex-grow: 1;
+}
