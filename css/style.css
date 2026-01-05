@@ -1,7 +1,7 @@
 :root {
      --font-main: 'Inter', sans-serif;
      --color-main: rgb(177, 177, 147);
-     --color-sec: whitesmoke;
+     --color-sec: rgb(231, 231, 217);
      --color-sec-hover: rgb(228, 228, 228);
 }
 
@@ -11,7 +11,7 @@ body {
      display: flex;
      flex-direction: row;
      font-family: var(--font-main);
-     background-color: var(--color-main);
+     background-color: var(--color-sec);
      margin: 0px;
      overflow: hidden;
 }
@@ -19,6 +19,7 @@ body {
 
 /* * Style de la Navbar verticale (pour un rendu un peu plus moderne*/
 nav {
+     background-color: var(--color-main);
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -52,6 +53,26 @@ nav {
      transition: all 0.2s;
 }
 
+.buttonreset {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: xx-large;
+     background-color: var(--color-sec);
+     border-radius: 15px;
+     width: 100px;
+     height: 100px;
+     cursor: pointer;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     color: red;
+}
+.buttonreset:hover {
+     background-color: rgb(252, 166, 166);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.3);
+     transform: scale(1.1);
+     transition: all 0.2s;
+}
+
 
 /** Partie Display des Todo*/
 
@@ -63,16 +84,18 @@ h1 {
 
 /** Div de chaque TODO*/
 .todo {
-     background-color: var(--color-sec);
+     background-color: whitesmoke;
      box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
      border-radius: 15px;
 
      width: 100%;
+     min-height: 50px;
      display: flex;
      flex-direction: row;
      justify-content: end;
+     align-items: center;
      margin-left: 15px;
-     margin-bottom: 15px;
+     margin-top: 15px;
 }
 
 .todo img {
@@ -86,4 +109,66 @@ h1 {
 }
 .todo p {
      flex-grow: 1;
+}
+
+.pretodo {
+     background-color: var(--color-sec);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     border-radius: 15px;
+     
+     width: 100%;
+     min-height: 50px;
+     display: flex;
+     flex-direction: row;
+     justify-content: end;
+     align-items: center;
+     margin-left: 15px;
+}
+.pretodo img {
+     align-self: center;
+     height: 40px;
+     width: auto;
+     margin-right: 15px;
+}
+.pretodo input {
+     margin-left: 15px;
+}
+.pretodo p {
+     flex-grow: 1;
+}
+
+/** Bloc de confirmation pour mettre une nouvelle ToDo*/
+
+.iteminput {
+     flex-grow: 1;
+     border: none;
+     background-color: var(--color-sec);
+}
+.iteminput:focus {
+     outline: none;
+}
+
+.containerx {
+     display: flex;
+     flex-direction: row;
+     gap: 15px;
+     align-items: center;
+}
+.validate {
+     border-radius: 15px;
+     background-color: transparent;
+     border: none;
+
+     font-size: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+}
+
+/** Container pour les todo lié à js:script.js: 58*/
+.containertodo {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
 }
