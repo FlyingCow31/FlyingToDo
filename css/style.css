@@ -88,6 +88,8 @@ h1 {
      box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
      border-radius: 15px;
 
+
+     
      width: 100%;
      min-height: 50px;
      display: flex;
@@ -104,6 +106,11 @@ h1 {
      width: auto;
      margin-right: 15px;
 }
+.todo img:hover {
+     scale: 1.1;
+     transition: all 0.2s linear;
+}
+
 .todo input {
      margin-left: 15px;
 }
@@ -129,6 +136,10 @@ h1 {
      height: 40px;
      width: auto;
      margin-right: 15px;
+}
+.pretodo img:hover {
+     scale: 1.1;
+     transition: all 0.2s linear;
 }
 .pretodo input {
      margin-left: 15px;
@@ -165,8 +176,12 @@ h1 {
      justify-content: center;
      cursor: pointer;
 }
+.validate:hover{
+     transform: scale(1.1);
+     transition: all 0.2s linear;
+}
 
-/** Container pour les todo lié à js:script.js: 58*/
+/** Container pour les todo lié à js:script.js: 80*/
 .containertodo {
      display: flex;
      flex-direction: column;

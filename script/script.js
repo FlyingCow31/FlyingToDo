@@ -31,7 +31,22 @@ uploadbutton.addEventListener('click', () => { // Créer un eventlistener qui ex
      const buttonvalidate = document.getElementById('validate');     // créer une instance pour le bouton valider pour en faire une fonction après 
      buttonvalidate.addEventListener('click', () => saveToDo()); // quand le bouton valider est clické, alors ça execute le code pour sauvegarder
 
+     const inputpretodo = document.getElementById('inputpretodo');
+
+     inputpretodo.addEventListener('keypress', (event) => { // créer un listener qui cherche une touche pressée spécifiée dans le parametre de la fonction
+          if (event.key === "Enter") { // assigne la touche entré à l'event, qui fait que le keypress cherche si la touche entrée a été pressée 
+
+               saveToDo(); // si oui, alors sauvegarde
+          };
+     });
+
+
+     // * Bin du pretodo
+     const binpretodo = document.getElementById('binpretodo');
      
+     binpretodo.addEventListener('click', () => {
+          createToDo.innerHTML = '';
+     });
 });
 
 
@@ -80,6 +95,20 @@ function refreshToDo() { // fonction pour rafraichir la page avec les items, qui
                     console.log(`y a un problème quelque part:` + itemnumber); // envoie un message d'erreur
                }
           });
+
+          // * Partie checkbox
+
+          const checkbox = divtodo.querySelector('input[type="checkbox"]');
+
+          checkbox.addEventListener('change', () => { // regarde quand la checkbox change de statut
+               if (checkbox.checked) { // si elle est checked, applique du style spécifique
+                    divtodo.style.opacity = "0.5";
+                    divtodo.style.textDecoration = "line-through";
+               } else { // sinon, ne fait rien mais il faut remettre le code sinon ça ne s'actualise pas et ça reste comme en haut
+                    divtodo.style.opacity = "1";
+                    divtodo.style.textDecoration = "none";
+               }
+          });
      });
 };
 
@@ -92,7 +121,3 @@ resetbtn.addEventListener('click', () =>{ // fonction pour reset toute la liste 
      refreshToDo(); // rafraichis la liste pour pas avoir à redémarrer le navigateur
      console.log(`Array cleared: ${array} !`); // confirmation pour debug
 });
-
-
-
-// * OK la je pars un peu hors consigne mais je veux ajouter deux trois trucs en plus: 
