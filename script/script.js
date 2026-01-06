@@ -42,7 +42,7 @@ uploadbutton.addEventListener('click', () => { // Créer un eventlistener qui ex
 
 
      // * Bin du pretodo
-     const binpretodo = document.getElementById('binpretodo');
+     const binpretodo = document.getElementById('binpretodo'); // meme comportement que la bin en dessous
      
      binpretodo.addEventListener('click', () => {
           createToDo.innerHTML = '';
@@ -51,8 +51,15 @@ uploadbutton.addEventListener('click', () => { // Créer un eventlistener qui ex
 
 
 async function saveToDo() {  // fonction asynchrone pour que la page ne freeze pas quand ça sauvegarde la data et que ça fasse le code dans l'ordre donné et pas tout en meme temps
+     
      let inputvalue = document.getElementById('inputpretodo').value; // prends la valeur de l'input uniquement quand la fonction est appellée sinon ça renvoie null
-     array.push(inputvalue); // ajoute la valeur (la todo) à l'array, en premier (pour faciliter la gestion après)
+
+     const obj = { // créer un object qui va stocker la data de chaque todo quand il est créé
+          name: `${inputvalue}`,
+          checked: document.getElementById('precheck').checked
+     };
+
+     array.push(obj); // ajoute la valeur (obj) à l'array, en premier (pour faciliter la gestion après)
 
 
      localStorage.setItem('todoitems', JSON.stringify(array)); // créer un fichier JSON avec la liste de l'array dans le stockage local pour pouvoir y accèder même après reset du site
@@ -61,7 +68,6 @@ async function saveToDo() {  // fonction asynchrone pour que la page ne freeze p
      console.log(array); // log toutes les taches 
 
      refreshToDo(); // rafraichis la page pour éviter de devoir restart la window
-
 };
 
 function refreshToDo() { // fonction pour rafraichir la page avec les items, qui accessoirement créer aussi les items 
@@ -69,14 +75,30 @@ function refreshToDo() { // fonction pour rafraichir la page avec les items, qui
      divcontainer.innerHTML = ""; // vide le container avant de le reremplir pour éviter les doublons
      
      array.forEach(item => { // créer un morceau pour que pour chaque item dans Array ça créer une div todo
+          
           const divtodo = document.createElement('div'); // créer une nouvelle DIV dans laquelle sera stocké les données
           divtodo.classList = 'todo'; // lui ajoute la classe todo pour le style
-     
-          divtodo.innerHTML = ` 
+          
+          if (item.checked === true) { // Si l'item est checked, alors 
+             divtodo.innerHTML = ` 
                <input type="checkbox" id="check">
-               <p class="itemtext" id="ptodo">${item}</p>
+               <p class="itemtext" id="ptodo">${item.name}</p>
                <img class="itemdel" src="../img/bin.png" id="bintodo">
-          `; // code de la div avec item pour désigner l'item précis
+               `; // code de la div avec item pour désigner l'item précis  
+               divtodo.querySelector('input[type="checkbox"]').checked = true; // assigne true à la valeur
+               divtodo.style.opacity = "0.5";
+               divtodo.style.textDecoration = "line-through";
+          } else {
+               divtodo.innerHTML = ` 
+               <input type="checkbox" id="check">
+               <p class="itemtext" id="ptodo">${item.name}</p>
+               <img class="itemdel" src="../img/bin.png" id="bintodo">
+               `; // code de la div avec item pour désigner l'item précis  
+               divtodo.querySelector('input[type="checkbox"]').checked = false; // assigne false à la valeur
+               divtodo.style.opacity = "1";
+               divtodo.style.textDecoration = "none";
+          }
+          
           divcontainer.prepend(divtodo); // mets la div au début
 
           
@@ -101,6 +123,9 @@ function refreshToDo() { // fonction pour rafraichir la page avec les items, qui
           const checkbox = divtodo.querySelector('input[type="checkbox"]');
 
           checkbox.addEventListener('change', () => { // regarde quand la checkbox change de statut
+               
+               item.checked = checkbox.checked; // assigne à la valeur checked de l'item le statuts juste en bas
+
                if (checkbox.checked) { // si elle est checked, applique du style spécifique
                     divtodo.style.opacity = "0.5";
                     divtodo.style.textDecoration = "line-through";
@@ -108,6 +133,8 @@ function refreshToDo() { // fonction pour rafraichir la page avec les items, qui
                     divtodo.style.opacity = "1";
                     divtodo.style.textDecoration = "none";
                }
+               localStorage.setItem('todoitems', JSON.stringify(array)); // sauvegarde
+               console.log(`Array après change de checkbox:` + item.checked); // ligne pour debug
           });
      });
 };
