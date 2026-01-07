@@ -27,7 +27,6 @@ uploadbutton.addEventListener('click', () => {
                <img class="itemdel" src="../img/bin.png" id="binpretodo">
           </div>
           <button id="validate" class="validate">✔️</button>
-
           `; 
 
      const buttonvalidate = document.getElementById('validate');     
