@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () =>{
      if (localStorage.getItem('todoitems')) {  
           array = JSON.parse(localStorage.getItem('todoitems'));
           console.log(array); 
-     }
+     };
      refreshToDo();
 });
 
@@ -145,3 +145,17 @@ resetbtn.addEventListener('click', () =>{
      refreshToDo(); 
      console.log(`Array cleared: ${array} !`); 
 });
+
+
+// * Fonction pour ajouter plein d'items d'un coup pour provoquer l'apparition de la scrollbar 
+function debugTheApp() {
+     for (let i = 0; i < 11; i++) {
+          const obj = {
+          name: `TestDebug`,
+          checked: true
+          };
+          array.push(obj);
+     };
+     localStorage.setItem('todoitems', JSON.stringify(array)); 
+     refreshToDo();
+}

@@ -1,6 +1,6 @@
 {
-  "name": "FlyingToDo",
-  "version": "1.0.0",
+  "name": "flyingtodo",
+  "version": "1.1.0",
   "description": "A TODO list application to learn JS, that I will maybe continue later.",
   "main": "main.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "electron": "^39.2.7"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "update-electron-app": "^3.1.2"
   }
 }

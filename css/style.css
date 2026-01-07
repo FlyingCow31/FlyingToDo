@@ -90,7 +90,7 @@ h1 {
 
 
      
-     width: 100%;
+     width: 90%;
      min-height: 50px;
      display: flex;
      flex-direction: row;
@@ -186,4 +186,48 @@ h1 {
      display: flex;
      flex-direction: column;
      gap: 10px;
+     height: calc(100vh - 130px);
+
+     overflow-y: scroll;
+     overflow-x: hidden;
+     flex: 1;
+}
+.containertodo::-webkit-scrollbar {
+     width: 6px;
+     /* Largeur de la scrollbar */
+}
+
+.containertodo::-webkit-scrollbar-track {
+     background: transparent;
+     /* Fond transparent */
+}
+
+.containertodo::-webkit-scrollbar-thumb {
+     background: rgba(0, 0, 0, 0.2);
+     /* Couleur semi-transparente */
+     border-radius: 3px;
+}
+
+.containertodo::-webkit-scrollbar-thumb:hover {
+     background: rgba(0, 0, 0, 0.4);
+     /* Plus visible au hover */
+}
+
+
+@media (max-width: 800px) and (max-height: 600px) {
+     
+     body {
+          overflow: hidden;
+     }
+     .todo {
+          width: 90%;
+     }
+     .containertodo {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+     
+          overflow-y: scroll;
+          overflow-x: hidden;
+     }
 }
