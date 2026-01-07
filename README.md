@@ -1,6 +1,11 @@
 # FlyingToDo
 
-A TODO list application to learn JS, that I will maybe continue later.
+A TODO list application which is the first of my own made desktop apps.
+The goal is to recreate all of the apps on my PC so that I can have a full owned PC without any exterior apps (except games of course...).
+This is an electron app, see release for the setup file.
+
+If you have an idea of a feature, do not hesitate to post it !
+This was made using JS, HTML and CSS + Electron.
 
 Features wanted:
 
