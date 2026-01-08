@@ -2,16 +2,31 @@ const createToDo = document.getElementById('pretodo');
 const divcontainer = document.querySelector('.containertodo');
 const uploadbutton = document.getElementById('uploadbutton'); 
 const resetbtn = document.getElementById('resetbtn');
+const settings = document.querySelector('.settings');
 
-let array = []; // Array qui stocke les valeurs
+let array = []; // Array qui stocke les valeurs des todos
 
 
 // * Rafraischissement des valeurs au démarrage
 document.addEventListener('DOMContentLoaded', () =>{ 
+     // récupèration des items
      if (localStorage.getItem('todoitems')) {  
           array = JSON.parse(localStorage.getItem('todoitems'));
           console.log(array); 
      };
+
+     // récupèration des couleurs et application au démarrage
+     if (localStorage.getItem('maincolor') || localStorage.getItem('seccolor')) {
+          
+          const mainvalue = localStorage.getItem('maincolor');
+          const secvalue = localStorage.getItem('seccolor');
+
+          console.log('Trouvé!');
+          root.style.setProperty('--color-main', mainvalue);
+          root.style.setProperty('--color-sec', secvalue);
+     } else {
+          console.log('pas trouvé...');
+     }
      refreshToDo();
 });
 
@@ -159,3 +174,63 @@ function debugTheApp() {
      localStorage.setItem('todoitems', JSON.stringify(array)); 
      refreshToDo();
 }
+
+
+// * Style de la page: changement de couleur dans les settings
+
+const root = document.documentElement;
+const inputmaincolor = document.querySelector('.maincolorpick');
+const inputseccolor = document.querySelector('.seccolorpick');
+const resetcolbtn = document.querySelector('.resetclr');
+
+// main color
+inputmaincolor.addEventListener('change', () => {
+     const mainvalue = inputmaincolor.value;
+     root.style.setProperty('--color-main', mainvalue);
+     
+     console.log(inputmaincolor.value);
+     localStorage.setItem('maincolor', mainvalue);
+});
+
+// secondary color
+inputseccolor.addEventListener('change', () => {
+     const seccolor = inputseccolor.value;
+     root.style.setProperty('--color-sec', seccolor);
+     
+     console.log(seccolor);
+     localStorage.setItem('seccolor', seccolor);
+});
+
+// reset color button 
+resetcolbtn.addEventListener('click', () => {
+     root.style.setProperty('--color-main', 'rgb(177, 177, 147)');
+     root.style.setProperty('--color-sec', 'rgb(231, 231, 217)');
+     localStorage.removeItem('seccolor');
+     localStorage.removeItem('maincolor');
+});
+
+
+// * Retour btn dans settings
+
+const retourbtn = document.querySelector('.retour');
+
+retourbtn.addEventListener('click', () => {
+     settings.style.display = "none";
+     issettopen = false;
+});
+
+// * Settings BTN
+
+const settingsbtn = document.getElementById('settingsbtn');
+let issettopen = false;
+
+settingsbtn.addEventListener('click', () => {
+     
+     if (issettopen === false) {
+          settings.style.display = "block";
+          issettopen = true;
+     } else {
+          settings.style.display = "none";
+          issettopen = false;
+     };
+});

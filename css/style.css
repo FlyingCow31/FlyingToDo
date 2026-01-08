@@ -15,7 +15,7 @@ body {
      margin: 0px;
      overflow: hidden;
 }
-
+ 
 
 /* * Style de la Navbar verticale (pour un rendu un peu plus moderne*/
 nav {
@@ -29,12 +29,12 @@ nav {
      padding-left: 15px;
 }
 
-.logo { /* Logo */
+.logo { 
      margin-top: 15px;
      height: 70px;
      width: auto;
 }
-.buttonadd { /* Le bouton pour ajouter une todo*/
+.buttonadd { 
      display: flex;
      align-items: center;
      justify-content: center;
@@ -46,7 +46,7 @@ nav {
      cursor: pointer;
      box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
 }
-.buttonadd:hover { /*Animation de hover pour le bouton*/
+.buttonadd:hover { 
      background-color: var(--color-sec-hover);
      box-shadow: 1px 1px 6px rgb(0,0,0,0.3);
      transform: scale(1.1);
@@ -68,6 +68,25 @@ nav {
 }
 .buttonreset:hover {
      background-color: rgb(252, 166, 166);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.3);
+     transform: scale(1.1);
+     transition: all 0.2s;
+}
+
+.settingsbtn {
+     background-color: var(--color-sec);
+     width: 100px;
+     height: 100px;
+     cursor: pointer;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     border-radius: 15px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: xx-large;
+}
+.settingsbtn:hover {
+     background-color: var(--color-sec-hover);
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.3);
      transform: scale(1.1);
      transition: all 0.2s;
@@ -213,7 +232,34 @@ h1 {
      /* Plus visible au hover */
 }
 
+.retour {
+     margin-bottom: 5px;
+     margin-top: 0px;
+     cursor: pointer;
 
+}
+.retour:hover {
+     text-decoration: underline 1px solid var(--color-sec);
+     transform:translateY(-5px);
+     transition: all 0.1s linear;
+}
+.settings h1 {
+     margin-top: 0px;
+}
+.settings label, .settings input {
+     margin-bottom: 15px;
+
+}
+.settings button {
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     margin-bottom: 15px ;
+     background-color: var(--color-sec);
+     border: none;
+     font-size: 20px;
+     padding: 10px;
+     border-radius: 15px;
+}
+/** Responsive design for the app*/
 @media (max-width: 800px) and (max-height: 600px) {
      
      body {
@@ -230,4 +276,26 @@ h1 {
           overflow-y: scroll;
           overflow-x: hidden;
      }
+
+
+     .settings {
+          width: 90%;
+     }
+}
+
+
+/** .settings style*/
+
+.settings {
+     display: none;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+     background-color: var(--color-main);
+     padding: 25px;
+     border-radius: 15px;
+
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.5);
 }
