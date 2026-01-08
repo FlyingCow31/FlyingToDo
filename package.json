@@ -1,6 +1,6 @@
 {
   "name": "flyingtodo",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A TODO list application to learn JS, that I will maybe continue later.",
   "main": "main.js",
   "scripts": {
@@ -36,5 +36,39 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
     "update-electron-app": "^3.1.2"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "flyingtodo"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "win32"
+          ]
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "FlyingCow31",
+              "name": "FlyingToDo"
+            },
+            "prerelease": false,
+            "draft": false
+          }
+        }
+      ]
+    }
   }
 }
