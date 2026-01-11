@@ -202,10 +202,12 @@ h1 {
 
 /** Container pour les todo lié à js:script.js: 80*/
 .containertodo {
+     outline: red 1px solid;
      display: flex;
      flex-direction: column;
      gap: 10px;
      height: calc(100vh - 130px);
+     padding-bottom: 20px;
 
      overflow-y: scroll;
      overflow-x: hidden;
@@ -269,8 +271,10 @@ h1 {
           width: 90%;
      }
      .containertodo {
+          outline: red 1px solid;
           display: flex;
           flex-direction: column;
+          height: calc(100vh - 200px);
           gap: 10px;
      
           overflow-y: scroll;

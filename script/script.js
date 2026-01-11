@@ -166,7 +166,7 @@ resetbtn.addEventListener('click', () =>{
 function debugTheApp() {
      for (let i = 0; i < 11; i++) {
           const obj = {
-          name: `TestDebug`,
+          name: `TestDebug ${i}`,
           checked: true
           };
           array.push(obj);
