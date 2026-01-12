@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () =>{
      } else {
           console.log('pas trouvé...');
      }
-     refreshToDo();
+     /*refreshToDo(); */
+     // ! à changer 
 });
 
 
@@ -95,11 +96,14 @@ function refreshToDo() {
           const divtodo = document.createElement('div');
           divtodo.classList = 'todo'; 
           
-          divtodo.innerHTML = ` 
+          divtodo.innerHTML = `
                <input type="checkbox" id="check">
                <p class="itemtext" id="ptodo">${item.name}</p>
                <img class="itemdel" src="../img/bin.png" id="bintodo">
-               `; 
+               <p class="addtag" id="addtag">🔖</p>
+                    `; 
+
+                    // ! Ne pas oublier de réactiver le refresh au démarrage 
           divtodo.querySelector('input[type="checkbox"]').checked = item.checked
 
           

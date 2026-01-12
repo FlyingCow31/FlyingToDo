@@ -19,3 +19,4 @@ Features wanted:
 Features ideas:
 
 - [ ] To add tags and descriptions to elements
+- [ ] Have a custom logo

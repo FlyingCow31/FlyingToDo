@@ -103,20 +103,12 @@ h1 {
 
 /** Div de chaque TODO*/
 .todo {
-     background-color: whitesmoke;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
-     border-radius: 15px;
-
-
-     
-     width: 90%;
-     min-height: 50px;
      display: flex;
-     flex-direction: row;
-     justify-content: end;
-     align-items: center;
-     margin-left: 15px;
-     margin-top: 15px;
+          flex-direction: row;
+          justify-content: end;
+          align-items: center;
+          margin-left: 15px;
+          margin-top: 15px;
 }
 
 .todo img {
@@ -133,9 +125,58 @@ h1 {
 .todo input {
      margin-left: 15px;
 }
-.todo p {
+.todo .itemtext {
      flex-grow: 1;
 }
+.todo .addtag {
+     margin-right: 15px;
+     font-size: large;
+     font-family: var(--font-main);
+     font-weight: bold;
+}
+
+.containertodo2 {
+     margin-left: 15px;
+     background-color: whitesmoke;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     border-radius: 15px;
+     
+     width: 90%;
+     min-height: 50px;
+     display: flex;
+     flex-direction: column;
+}
+
+.tagtest {
+     margin-top: 0px;
+     border-radius: 5px;
+     background-color: rgb(146, 209, 224);
+     border: 1px solid rgb(90, 128, 138);
+     width: fit-content;
+     margin-left: 15px;
+     padding-left: 5px;
+     padding-right: 5px;
+}
+
+.tagtest {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.containertags {
+     margin-top: 0px;
+     display: flex;
+     flex-direction: row;
+}
+
+
+
+
+
+
+
+
 
 .pretodo {
      background-color: var(--color-sec);
@@ -202,7 +243,6 @@ h1 {
 
 /** Container pour les todo lié à js:script.js: 80*/
 .containertodo {
-     outline: red 1px solid;
      display: flex;
      flex-direction: column;
      gap: 10px;
@@ -271,7 +311,6 @@ h1 {
           width: 90%;
      }
      .containertodo {
-          outline: red 1px solid;
           display: flex;
           flex-direction: column;
           height: calc(100vh - 200px);
