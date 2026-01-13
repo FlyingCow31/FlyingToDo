@@ -5,6 +5,7 @@ const resetbtn = document.getElementById('resetbtn');
 const settings = document.querySelector('.settings');
 
 let array = []; // Array qui stocke les valeurs des todos
+let tags = []; // Array qui stocke les valeurs des tags 
 
 
 // * Rafraischissement des valeurs au démarrage
@@ -27,8 +28,15 @@ document.addEventListener('DOMContentLoaded', () =>{
      } else {
           console.log('pas trouvé...');
      }
-     /*refreshToDo(); */
-     // ! à changer 
+
+     if (localStorage.getItem('taglist')) {
+          tags = JSON.parse(localStorage.getItem('taglist'));
+          console.log(tags);
+     } else {
+          console.log('problème dans la récupération des tags...');
+     };
+
+     refreshToDo();
 });
 
 
@@ -94,16 +102,23 @@ function refreshToDo() {
      array.forEach(item => { 
           
           const divtodo = document.createElement('div');
-          divtodo.classList = 'todo'; 
+          divtodo.classList = 'containertodo2'; 
           
           divtodo.innerHTML = `
+          <div class="todo">
                <input type="checkbox" id="check">
                <p class="itemtext" id="ptodo">${item.name}</p>
                <img class="itemdel" src="../img/bin.png" id="bintodo">
-               <p class="addtag" id="addtag">🔖</p>
-                    `; 
+          </div>
+          <div class="containertags">
+               <button class="addtagbutton" id="addtagbutton">+</button>
+               <p class="tagtest">tagtest</p>
+               <p class="tagtest">TagTest</p>
+               <p class="tagtest">TagTest</p>
+               <p class="tagtest">TagTest</p>
+          </div>
+`; 
 
-                    // ! Ne pas oublier de réactiver le refresh au démarrage 
           divtodo.querySelector('input[type="checkbox"]').checked = item.checked
 
           
@@ -180,6 +195,12 @@ function debugTheApp() {
 }
 
 
+
+
+
+
+
+
 // * Style de la page: changement de couleur dans les settings
 
 const root = document.documentElement;
@@ -238,3 +259,83 @@ settingsbtn.addEventListener('click', () => {
           issettopen = false;
      };
 });
+
+
+
+
+
+
+
+
+
+
+// * Tags 
+
+const crtagcont = document.getElementById('crtagcont');
+const createtagbtn = document.getElementById('createtagbtn');
+let isopen3 = false;
+
+createtagbtn.addEventListener('click', () => {
+     actualiseTagList();
+
+     if (isopen3 === false) {
+          crtagcont.classList.add('active');
+          isopen3 = true; 
+     } else if (isopen3 === true) {
+          crtagcont.classList.remove('active');
+          isopen3 = false;
+     };
+    
+});
+
+
+
+// * Tags logic
+const inputtags = document.getElementById('inputtags');
+
+inputtags.addEventListener('keypress', (event) => {
+     if (event.key === 'Enter') {
+          saveTags();
+          actualiseTagList();
+          inputtags.value ='';
+     } else { console.log('non pas enter');}
+});
+
+function saveTags () {
+     let valuetags = document.getElementById('inputtags').value;
+
+     const tag = {
+          name: `${valuetags}`
+     }
+     tags.push(tag);
+
+     localStorage.setItem('taglist', JSON.stringify(tags));
+     console.log(tags);
+};
+
+function actualiseTagList() {
+     const containertags = document.getElementById('containertags');
+
+     containertags.innerHTML = '';
+     tags.forEach(tags => {
+
+          const tagInList = document.createElement('p');
+
+          tagInList.className = "tagtest";
+          tagInList.innerText = `${tags.name}`;
+          // TODO Modifier pour qu'on puisse supprimer
+          containertags.append(tagInList);
+     });
+}
+
+
+
+
+
+
+
+
+
+
+// * Debug 
+debugTheApp();

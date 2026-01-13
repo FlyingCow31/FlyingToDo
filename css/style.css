@@ -93,6 +93,27 @@ nav {
 }
 
 
+.createtagbtn {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: xx-large;
+     background-color: var(--color-sec);
+     border-radius: 15px;
+     width: 100px;
+     height: 100px;
+     cursor: pointer;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+}
+
+.createtagbtn:hover {
+     background-color: var(--color-sec-hover);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.3);
+     transform: scale(1.1);
+     transition: all 0.2s;
+}
+
+
 /** Partie Display des Todo*/
 
 h1 {
@@ -107,8 +128,6 @@ h1 {
           flex-direction: row;
           justify-content: end;
           align-items: center;
-          margin-left: 15px;
-          margin-top: 15px;
 }
 
 .todo img {
@@ -142,20 +161,24 @@ h1 {
      border-radius: 15px;
      
      width: 90%;
-     min-height: 50px;
+     height: 100%;
      display: flex;
      flex-direction: column;
 }
 
+
+
+/** Tags */
+
 .tagtest {
-     margin-top: 0px;
+     margin-top: 15px;
      border-radius: 5px;
      background-color: rgb(146, 209, 224);
      border: 1px solid rgb(90, 128, 138);
      width: fit-content;
      margin-left: 15px;
-     padding-left: 5px;
-     padding-right: 5px;
+     padding-left: 10px;
+     padding-right: 10px;
 }
 
 .tagtest {
@@ -168,7 +191,49 @@ h1 {
      margin-top: 0px;
      display: flex;
      flex-direction: row;
+     align-items: center;
+     justify-content: left;
 }
+
+.addtagbutton {
+     background-color: var(--color-sec);
+     border: none;
+     outline: none;
+     margin-left: 15px;
+     padding: 5px;
+     border-radius: 5px;
+     cursor: pointer;
+     margin-top: 0px;
+     
+}
+
+.containercreatetags {
+     display: none;
+
+}
+.containercreatetags.active {
+     display: flex;
+     flex-direction: column;
+     background-color: var(--color-main);
+     width: 15%;
+     border-right: 1px black solid;
+
+}
+.containercreatetags input {
+     width: 50%;
+     margin-top: 15px;
+     margin-left: 15px;
+
+     background-color: var(--color-sec);
+     border: none;
+     padding: 10px;
+     border-radius: 10px;
+}
+.containertagslist {
+     display: flex;
+     flex-direction: column;
+}
+
 
 
 
