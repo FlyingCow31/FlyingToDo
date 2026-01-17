@@ -18,5 +18,7 @@ Features wanted:
 
 Features ideas:
 
-- [ ] To add tags and descriptions to elements
+- [x] To add tags
+- [ ] Add a description to each TODO
+- [ ] Refactor code
 - [ ] Have a custom logo
