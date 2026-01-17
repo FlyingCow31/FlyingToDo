@@ -137,7 +137,7 @@ function refreshToDo() {
                containertags.innerHTML = '<button class="addtagbutton">+</button>';
 
                const addtagbutton = divtodo.querySelector('.addtagbutton');
-               
+               const currentTags = item.tagg || [] ; 
 
                addtagbutton.addEventListener('click', () => {
                     if (isopen4 == false) {
@@ -149,7 +149,7 @@ function refreshToDo() {
                          isopen4 = false;
                     };
                });
-               item.tagg.forEach(tag => {
+                    currentTags.forEach(tag => {
                     
 
                     let tagInTodo = document.createElement('p');
@@ -220,6 +220,9 @@ function refreshToDo() {
                     tagInList.style.cursor = "pointer";
 
                     tagInList.addEventListener('click', () => {
+                         if (!item.tagg) {
+                              item.tagg = [];
+                         }
                          if (!item.tagg.some(t => t.name === tag.name)) {
 
                               item.tagg.push(tag);
