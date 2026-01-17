@@ -111,7 +111,7 @@ function refreshToDo() {
           <div class="todo">
                <input type="checkbox" id="check">
                <p class="itemtext" id="ptodo">${item.name}</p>
-               <img class="itemdel" src="../img/bin.png" id="bintodo">
+               <img class="itemdel" src="../img/bin.png">
           </div>
           <div class="containertagsintodo">
                <button class="addtagbutton" id="addtagbutton">+</button>
@@ -121,29 +121,6 @@ function refreshToDo() {
           divtodo.querySelector('input[type="checkbox"]').checked = item.checked
 
           
-          
-          divcontainer.prepend(divtodo);
-          
-
-          
-          
-          
-          // * Partie suppression
-          const bin = document.getElementById('bintodo'); 
-          bin.addEventListener('click', () => { 
-               let itemnumber = array.indexOf(item);
-
-               if (itemnumber !== -1) { 
-                    array.splice(itemnumber, 1); // supprime à partir du (x,.) le nombre d'items (.,x)
-                    localStorage.setItem('todoitems', JSON.stringify(array)); 
-                    refreshToDo();
-               } else {
-                    console.log(`y a un problème quelque part:` + itemnumber); 
-               }
-          });
-
-
-          // * Partie checkbox
           // * Actualise le check à la création
           if (item.checked === true) {
                divtodo.style.opacity = "0.5";
@@ -152,30 +129,14 @@ function refreshToDo() {
                divtodo.style.opacity = "1";
                divtodo.style.textDecoration = "none";
           }
-
-          // * actualise le check quand la box est cochée
-          const checkbox = divtodo.querySelector('input[type="checkbox"]');
-          checkbox.addEventListener('change', () => { 
-               item.checked = checkbox.checked; 
-
-               if (checkbox.checked) { 
-                    divtodo.style.opacity = "0.5";
-                    divtodo.style.textDecoration = "line-through";
-               } else { 
-                    divtodo.style.opacity = "1";
-                    divtodo.style.textDecoration = "none";
-               }
-               localStorage.setItem('todoitems', JSON.stringify(array)); 
-               console.log(`Array après change de checkbox:` + item.checked); 
-          });
-
-let isopen4 = false;
+          
+          let isopen4 = false;
           // * Gestion des tags 
           function displayTags() {
                const containertags = divtodo.querySelector('.containertagsintodo');
-               containertags.innerHTML = '<button class="addtagbutton" id="addtagbutton">+</button>';
+               containertags.innerHTML = '<button class="addtagbutton">+</button>';
 
-               const addtagbutton = document.getElementById('addtagbutton');
+               const addtagbutton = divtodo.querySelector('.addtagbutton');
                
 
                addtagbutton.addEventListener('click', () => {
@@ -202,6 +163,46 @@ let isopen4 = false;
           
           
           displayTags();
+          divcontainer.prepend(divtodo);
+          
+
+          
+          
+          
+          // * Partie suppression
+          const bin = divtodo.querySelector('.itemdel'); 
+          bin.addEventListener('click', () => { 
+               let itemnumber = array.indexOf(item);
+
+               if (itemnumber !== -1) { 
+                    array.splice(itemnumber, 1); // supprime à partir du (x,.) le nombre d'items (.,x)
+                    localStorage.setItem('todoitems', JSON.stringify(array)); 
+                    refreshToDo();
+               } else {
+                    console.log(`y a un problème quelque part:` + itemnumber); 
+               }
+          });
+
+
+          // * Partie checkbox
+          
+
+          // * actualise le check quand la box est cochée
+          const checkbox = divtodo.querySelector('input[type="checkbox"]');
+          checkbox.addEventListener('change', () => { 
+               item.checked = checkbox.checked; 
+
+               if (checkbox.checked) { 
+                    divtodo.style.opacity = "0.5";
+                    divtodo.style.textDecoration = "line-through";
+               } else { 
+                    divtodo.style.opacity = "1";
+                    divtodo.style.textDecoration = "none";
+               }
+               localStorage.setItem('todoitems', JSON.stringify(array)); 
+               console.log(`Array après change de checkbox:` + item.checked); 
+          });
+
           
                
           
