@@ -4,8 +4,9 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>FlyingToDo</title>
-     <link rel="stylesheet" href="../css/style.css">
-     <script src="../script/script.js" defer></script>
+     <link rel="stylesheet" href="../css/newstyle.css">
+     <link rel="stylesheet" href="../css/animations.css">
+     <script src="../script/newscript.js" defer></script>
 
      <link rel="preconnect" href="https://fonts.googleapis.com"> 
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,33 +16,67 @@
 
 </head>
 <body>
+
+     <!-- ! NAVBAR -->
      <nav>
           <img class="logo" src="../img/flyingtodologo.png">
-          <p class="buttonadd" id="uploadbutton">+</p>
-          <p class="settingsbtn" id="settingsbtn">🔧</p>
-          <p class="createtagbtn" id="createtagbtn">#</p>
+          <button class="buttonadd" id="uploadbutton">+</button>
+          <button class="settingsbtn" id="settingsbtn">🔧</button>
+          <button class="createtagbtn" id="createtagbtn">#</button>
      </nav>
 
+     <!-- ! Tag Creator -->
      <div class="containercreatetags" id="crtagcont">
           <input class="inputcreatetags" id="inputtags" placeholder="Créez votre tag!">
-          <div class="containertagslist" id="containertags"></div>
+          <div class="containertagslist" id="containertags">
+               <div class="tagtest">Tagtest</div>
+               <div class="tagtest">Tagtest</div>
+               <div class="tagtest">Tagtest</div>
+          </div>
      </div>
 
+     <!-- ! Choice tag  -->
      <div class="choicetagcont" id="choicetagcont">
           <p class="titletag">Choose a tag</p>
+          <div class="tagtest">tagtest</div>
      </div>
 
+
+     <!-- ! Main section  -->
      <section>
           <h1>Welcome on FlyingToDo !</h1>
-          <div class="containerx" id="pretodo">
+          <!-- ! Container PRETODO -->
+          <div class="containerx">
+
+               <div class="pretodo" id="pretodo">
+                    <input type="checkbox" id="precheck">
+                    <input class="iteminput" id="inputpretodo" placeholder="Entrez Votre Todo"></input>
+                    <img class="itemdel" src="../img/bin.png" id="binpretodo">
+               </div>
+               <button id="validate" class="validate">✔️</button>
+
           </div>
 
+          <!-- ! Container TODO -->
           <div class="containertodo">
+               <div class="todo">
+                    <input type="checkbox" id="check">
+                    <p class="itemtext" id="ptodo">TODO trop stylée</p>
+                    <img class="itemdel" src="../img/bin.png">
+               </div>
+               <div class="containertagsintodo">
+                    <button class="addtagbutton" id="addtagbutton">+</button>
+                    <div class="tagtest">TagTest</div>
+               </div>
           </div>
      </section> 
+
+     <!-- ! Settings -->
      <section class="settings">
           <p class="retour"> < Retour</p>
           <h1>Select your own colors:</h1>
+
+
           <div>
                <label for="maincolorpick">Main Color - </label>
                <input type="color" name="maincolorpick" class="maincolorpick"> 
@@ -50,10 +85,16 @@
                <label for="seccolorpick">Secondary Color - </label>         
                <input type="color" name="seccolorpick" class="seccolorpick">
           </div>
+          <div>
+               <label for="tagcolorpick">Tag Color - </label>
+               <input type="color" name="tagcolorpick" class="tagcolorpick">
+          </div>
+
+
           <button class="resetclr">Reset Colors</button>
           
           <h1>Reset todos:</h1>
-          <p class="buttonreset" id="resetbtn">Reset</p>
+          <button class="buttonreset" id="resetbtn">Reset</button>
      </section>
 
      

@@ -1,0 +1,261 @@
+
+:root {
+     --font-main: 'Inter', sans-serif;
+     --color-main: rgb(177, 177, 147);
+     --color-sec: rgb(231, 231, 217);
+     --color-sec-hover: rgb(228, 228, 228);
+     --tag-color: rgb(201, 222, 253);
+     --tag-color-border: rgb(101, 137, 192);
+}
+
+/** Basic padding/margin: 15px */
+
+body {
+     display: flex;
+     flex-direction: row;
+     font-family: var(--font-main);
+     margin: 0px;
+     padding: 0px;
+     background-color: var(--color-sec);
+     overflow: hidden;
+}
+
+
+
+
+/** STYLE OF NAVBAR */
+
+
+nav {
+     position: relative;
+     user-select: none;
+     background-color: var(--color-main);
+     display: flex;
+     flex-direction: column;
+     height: 100vh;
+     padding: 15px;
+     gap: 15px;
+     align-items: center;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     z-index: 10;
+}
+
+nav img {
+     width: 15em;
+}
+
+nav button {
+     font-size: 2rem;
+     background-color: var(--color-sec);
+     width: 100px;
+     height: 100px;
+     outline: none;
+     border: none;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+
+nav button:hover {
+     transform: scale(1.1);
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.3);
+     background-color: var(--color-sec-hover);
+     transition: all 0.1s linear;
+}
+
+
+/** Style of Tag Creation*/
+
+.containercreatetags, .choicetagcont {
+     height: 100vh;
+     /* transform: translateX(-250px); */
+     display: flex;
+     flex-direction: column;
+     padding: 15px;
+     background-color: var(--color-main);
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);;
+     align-items: center;
+}
+.containercreatetags input {
+     background-color: var(--color-sec);
+     border: none;
+     padding: 10px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     margin-bottom: 20px;
+}
+
+.containercreatetags input:focus {
+     border: none;
+     outline: none;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.6);
+}
+
+
+/** Tags' style*/
+
+.tagtest {
+     background-color: var(--tag-color);
+     border-radius: 5px;
+     width: fit-content;
+     padding-top: 0.3rem;
+     padding-bottom: 0.3rem;
+     padding-left: 1rem;
+     padding-right: 1rem;
+     margin-top: 15px;
+}
+
+
+/** Style of Tag choice*/
+
+/* Container is up there*/
+
+.choicetagcont p {
+     background-color: var(--color-sec);
+     border-radius: 10px;
+     padding: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+
+/** Position of both  */
+.choicetagcont {
+     position: absolute;
+     top: 0px;
+     left: 0px;
+}
+.containercreatetags {
+     position: absolute;
+     top: 0px;
+     left: 0px;
+}
+
+
+/** Main page*/
+
+section {
+     margin-left: 15px;
+}
+section h1 {
+     font-size: 3rem;
+}
+
+
+/** PRETODO container*/
+.containerx {
+     display: flex;
+     gap: 15px;
+     height: 10%;
+}
+.pretodo {
+     display: flex;
+     gap: 10px;
+     height: 50%;
+     width: 100%;
+     background-color: var(--color-sec);
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.3);
+     border-radius: 15px;     
+}
+.pretodo img {
+     width: auto;
+     height: 80%;
+     padding: 1%;
+}
+.iteminput {
+     flex: 1;
+     align-self: center;
+     height: 70%;
+
+     background-color: var(--color-sec);
+     border: none;
+     border-radius: 10px;
+} 
+.iteminput:focus {
+     outline: none;
+}
+
+.containerx button {
+     background-color: var(--color-sec);
+     border: none;
+     font-size: xx-large;
+     height: 50%;
+}
+
+
+/* * TODOs style */
+.containertodo {
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+
+.todo {
+     height: 100%;
+     display: flex;
+     align-items: center;
+}
+.todo img {
+     width: auto;
+     height: 40px;
+     margin: 5px;
+}
+.todo p {
+     flex: 1;
+}
+
+
+.containertagsintodo {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 15px;
+     padding-bottom: 15px;
+     margin-left: 15px;
+
+}
+.containertagsintodo button {
+     margin-top: 15px;
+     background-color: var(--color-sec);
+     border: none;
+     border-radius: 5px;
+     font-size: x-large;
+}
+
+
+
+/* * Settings  */
+.settings {
+     position: absolute;
+     top: 25%;
+     left: -400px;
+     
+
+     background-color: var(--color-main);
+     padding: 15px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+
+.settings p {
+     background-color: var(--color-sec);
+     width: fit-content;
+     padding: 10px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     margin: 0px;
+}
+
+.resetclr, .buttonreset {
+     margin-top: 15px;
+     color: red;
+     background-color: var(--color-sec);
+     border: none;
+     padding: 10px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+.buttonreset {
+     margin: 0px;
+     font-size: xx-large;
+     font-weight: bold;
+}
