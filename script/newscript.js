@@ -1,7 +1,6 @@
 // TODO Rafraischissement de toutes les valeurs au démarrage 
-// TODO Créer l'objet de création des todos 
+
 // TODO Fonctionnalité pour valider les todos et tags avec entrée 
-// TODO Faire en sorte que les bins fonctionnent  
 // TODO sauvegarde des données 
 
 // TODO fonction pour display les tags 
@@ -17,11 +16,17 @@
 
 
 let todos = [ ];
+let allTags = [ ];
 
 // * Document Loading
 document.addEventListener('DOMContentLoaded', () => {
      todos = JSON.parse(localStorage.getItem('todoitems')) || [ ];
+     allTags = JSON.parse(localStorage.getItem('alltags')) || [ ];
      displayTodo();
+
+     console.log(allTags);
+     console.log(todos);
+
 });
 
 
@@ -154,7 +159,7 @@ function updateTodoCheck(div, checked) {
      div.style.textDecoration = checked ? "line-through" : "none";
 }
 
-// * Suppression 
+// * Deletion
 function deleteTodo(id) {
 
      todos = todos.filter(function(item){
@@ -164,4 +169,64 @@ function deleteTodo(id) {
      displayTodo();
 
 };
+
+
+// * Tags 
+
+
+
+// * Tag creation && storage
+
+const inputcreatetags = document.querySelector('.inputcreatetags');
+
+inputcreatetags.addEventListener('keypress', (event) => {
      
+     if (event.key == 'Enter') {
+          saveTag();
+          console.log('ça clique');
+          console.log(allTags);
+     };
+     
+});
+   
+
+function saveTag() {
+     const tagvalue = inputcreatetags.value;
+
+     const tagData = {
+          id: crypto.randomUUID(),
+          name: `${tagvalue}`,
+          color: randomColorTags()
+     };
+
+     allTags.push(tagData);
+     localStorage.setItem('alltags', JSON.stringify(allTags));
+     displayTags();
+};
+
+
+
+// * Tags random Color 
+const palette = ['#92d1e0', '#e09592', '#e0c192', '#d8d172', '#a8e09a', '#6270ec', '#bc7ac9', '#ffffff'];
+
+function randomColorTags() {
+     const randomIndex = Math.floor(Math.random()*8);
+
+     return palette[randomIndex];
+};
+
+// * Function to actualise tag list
+function displayTags() {
+     const containertagslist = document.querySelector('.containertagslist');
+
+     containertagslist.innerHTML = "";
+     allTags.forEach(tag => {
+          const tagcontainer = document.createElement('div');
+          tagcontainer.className = "tagtest";
+
+          tagcontainer.innerHTML = `
+          <button>✖</button>${tag.name}
+          `;
+          containertagslist.append(tagcontainer);
+     });
+}

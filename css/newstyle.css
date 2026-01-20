@@ -4,8 +4,7 @@
      --color-main: rgb(177, 177, 147);
      --color-sec: rgb(231, 231, 217);
      --color-sec-hover: rgb(228, 228, 228);
-     --tag-color: rgb(201, 222, 253);
-     --tag-color-border: rgb(101, 137, 192);
+     --tag-color: #ffffff;
 }
 
 /** Basic padding/margin: 15px */
@@ -102,6 +101,15 @@ nav button:hover {
      padding-left: 1rem;
      padding-right: 1rem;
      margin-top: 15px;
+}
+.tagtest button {
+     margin-right: 10px;
+     background: none;
+     border: none;
+}
+.tagtest button:hover {
+     transform: scale(1.1);
+     transition: all 0.1s linear;
 }
 
 
