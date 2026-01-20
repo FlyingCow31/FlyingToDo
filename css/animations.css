@@ -1,7 +1,7 @@
 /** Animations */
 .choicetagcont.active {
      top: 0px;
-     left: 489px;
+     left: 270px;
      transition: all 0.1s linear;
 }
 .containercreatetags.active {

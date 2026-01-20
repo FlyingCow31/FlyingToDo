@@ -118,7 +118,7 @@ function refreshToDo() {
           </div>
           `; 
 
-          divtodo.querySelector('input[type="checkbox"]').checked = item.checked
+          divtodo.querySelector('input[type="checkbox"]').checked = item.checked;
 
           
           // * Actualise le check à la création

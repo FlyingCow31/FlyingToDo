@@ -5,6 +5,7 @@ const { updateElectronApp } = require('update-electron-app');
 updateElectronApp();
 
 
+
 function createWindow() {
      const win = new BrowserWindow({
           title: 'FlyingTODO',
@@ -12,7 +13,7 @@ function createWindow() {
           width: 800,
           height: 600,
           webPreferences: {
-               nodeIntegration: true
+               nodeIntegration: true,
           }
      });
 

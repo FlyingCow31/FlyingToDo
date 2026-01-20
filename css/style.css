@@ -129,6 +129,7 @@ h1 {
      flex-direction: row;
      justify-content: end;
      align-items: center;
+     margin-bottom: 15px;
 }
 
 .todo img {
@@ -160,16 +161,19 @@ h1 {
      background-color: whitesmoke;
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      border-radius: 15px;
-     
+     margin-bottom: 15px;
+
      width: 90%;
      display: flex;
      flex-direction: column;
+
 }
 
 .containertagsintodo {
      display: flex;
      flex-direction: row;
      align-items: center;
+
 }
 
 
@@ -405,7 +409,7 @@ h1 {
           overflow: hidden;
      }
      .todo {
-          width: 90%;
+          width: 100%;
      }
      .containertodo {
           display: flex;
