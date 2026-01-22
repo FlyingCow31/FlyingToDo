@@ -143,7 +143,9 @@ function refreshToDo() {
                     if (isopen4 == false) {
                          choicetagcont.style.display = "flex";
                          isopen4 = true;
-                         actualiseChoiceTagList();
+
+                         actualiseChoiceTagList(item);
+
                     } else if (isopen4 == true) {
                          choicetagcont.style.display = "none";
                          isopen4 = false;

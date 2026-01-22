@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
      todos = JSON.parse(localStorage.getItem('todoitems')) || [ ];
      allTags = JSON.parse(localStorage.getItem('alltags')) || [ ];
      displayTodo();
+     displayTags();
+
 
      console.log(allTags);
      console.log(todos);
@@ -90,6 +92,7 @@ addTodobtn.addEventListener('click', () => {
 // * TODO display 
 const containertodo = document.querySelector('.containertodo');
 
+
 function displayTodo() {
      containertodo.innerHTML ="";
      todos.forEach(item => {
@@ -103,7 +106,7 @@ function displayTodo() {
                <img class="itemdel" data-id="${item.id}" src="../img/bin.png">
           </div>
           <div class="containertagsintodo">
-               <button class="addtagbutton" data-id="${item.id}" id="addtagbutton">+</button>
+               
           </div>`;
 
 
@@ -130,27 +133,15 @@ function displayTodo() {
 
 
           // * Add tag btn in each div
-          const addTagButton = document.querySelector('.addtagbutton');
-
-          let isChoiceTagOpen = false;
-
-          addTagButton.addEventListener('click', () => {
-               if (isChoiceTagOpen == false) {
-                    console.log('open');
-                    isChoiceTagOpen = true;
-                    choiceTag.classList.add('active');
-               } else {
-                    console.log('closed');
-                    isChoiceTagOpen = false;
-                    choiceTag.classList.remove('active');
-               };
-          });
+          displayTagsInTodo(item, divtodo);
 
           const bintodo = document.querySelector('.itemdel');
           bintodo.addEventListener('click', () => {
                deleteTodo(item.id);
           });
+     
      });
+
 };
 
 // * Style of check 
@@ -171,6 +162,7 @@ function deleteTodo(id) {
 };
 
 
+
 // * Tags 
 
 
@@ -183,6 +175,7 @@ inputcreatetags.addEventListener('keypress', (event) => {
      
      if (event.key == 'Enter') {
           saveTag();
+          inputcreatetags.value = '';
           console.log('ça clique');
           console.log(allTags);
      };
@@ -190,6 +183,7 @@ inputcreatetags.addEventListener('keypress', (event) => {
 });
    
 
+// * Save tags
 function saveTag() {
      const tagvalue = inputcreatetags.value;
 
@@ -225,8 +219,104 @@ function displayTags() {
           tagcontainer.className = "tagtest";
 
           tagcontainer.innerHTML = `
-          <button>✖</button>${tag.name}
+          <button data-id="${tag.id}" class="deltagbtn">✖</button>${tag.name}
           `;
+          tagcontainer.style.backgroundColor = `${tag.color}`;
           containertagslist.append(tagcontainer);
+
+          const deltagbtn = tagcontainer.querySelector('.deltagbtn');
+          
+          deltagbtn.addEventListener('click', (event) => {
+
+               const iddutag = event.currentTarget.getAttribute('data-id');
+               console.log(`Suppression du Tag numéro ${iddutag}`);
+               deleteTags(iddutag);
+          });
      });
-}
+};
+
+//* Delete Tags
+function deleteTags(id) {
+
+     allTags = allTags.filter(function(item){
+          return item.id !== id;
+     });
+     localStorage.setItem('alltags', JSON.stringify(allTags));
+     displayTags();
+};
+
+
+const choicetagcont = document.querySelector('.choicetagcont');
+
+function applyTags(item, divtodo) {
+     let titletag = document.createElement('p');
+     titletag.innerText = "Choose a tag !"
+     titletag.className = "titletag";
+     choicetagcont.prepend(titletag);
+
+
+     allTags.forEach(tag => {
+
+          const tagInList = document.createElement('div');
+
+          tagInList.className = "tagtest";
+          tagInList.innerHTML = `<p>${tag.name}</p>`
+          tagInList.style.backgroundColor = `${tag.color}`;
+          tagInList.style.cursor = "pointer";
+
+          choicetagcont.append(tagInList);
+
+          tagInList.addEventListener('click', () => {
+               !item.todotag ? "" : item.todotag = [];
+
+               if (!item.todotag.some(t => t.name === tag.name)) {
+
+                    item.todotag.push(tag);
+
+                    localStorage.setItem('todoitems', JSON.stringify(todos));
+                    console.log(item);
+                    displayTagsInTodo(item, divtodo);
+                    choiceTag.classList.remove('active');
+               };
+          });
+          
+     });
+};
+
+
+
+function displayTagsInTodo(item, divtodo) {
+
+     const containertagsintodo = divtodo.querySelector('.containertagsintodo');
+     containertagsintodo.innerHTML = `<button class="addtagbutton" data-id="${item.id}" id="addtagbutton">+</button>`;
+     const addTagButton = divtodo.querySelector('.addtagbutton');
+     
+
+     let isChoiceTagOpen = false;
+     
+     
+     
+     addTagButton.addEventListener('click', () => {
+          if (isChoiceTagOpen == false) {
+               console.log('open');
+               isChoiceTagOpen = true;
+               choiceTag.classList.add('active');
+
+               applyTags(item, divtodo);
+
+          } else {
+               console.log('closed');
+               isChoiceTagOpen = false;
+               choiceTag.classList.remove('active');
+          };
+     });
+     // ! ça duplique dans la liste et ça l'applique uniquement au premier 
+     item.todotag.forEach(tag => {
+          let tagInTodo = document.createElement('div');
+          tagInTodo.className = "tagtest";
+          tagInTodo.innerText = `${tag.name}`;
+          tagInTodo.style.backgroundColor = `${tag.color}`;
+
+          containertagsintodo.append(tagInTodo);
+     });
+};

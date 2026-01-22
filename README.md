@@ -19,6 +19,7 @@ Features wanted:
 Features ideas:
 
 - [x] To add tags
+- [ ] Make possible to change tag colors
 - [ ] Add a description to each TODO
 - [ ] Refactor code
 - [ ] Have a custom logo
