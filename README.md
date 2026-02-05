@@ -21,5 +21,5 @@ Features ideas:
 - [x] To add tags
 - [ ] Make possible to change tag colors
 - [ ] Add a description to each TODO
-- [ ] Refactor code
+- [x] Refactor code
 - [ ] Have a custom logo

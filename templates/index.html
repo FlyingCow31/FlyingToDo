@@ -1,83 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>FlyingToDo</title>
-     <link rel="stylesheet" href="../css/newstyle.css">
-     <link rel="stylesheet" href="../css/animations.css">
-     <script src="../script/newscript.js" defer></script>
-     <script src="../script/buttons.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlyingToDo</title>
+    <link rel="stylesheet" href="../css/newstyle.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <script src="../script/newscript.js" defer></script>
+    <script src="../script/buttons.js" defer></script>
 
-     <link rel="preconnect" href="https://fonts.googleapis.com"> 
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-     <link rel="icon" href="../img/icons8-check-mark-48.png">
+    <link rel="icon" href="../img/icons8-check-mark-48.png" />
+  </head>
+  <body id="wholebody">
+    <!-- ! NAVBAR -->
+    <nav>
+      <img class="logo" src="../img/flyingtodologo.png" />
+      <button class="buttonadd" id="uploadbutton">+</button>
+      <button class="settingsbtn" id="settingsbtn">🔧</button>
+      <button class="createtagbtn" id="createtagbtn">#</button>
+    </nav>
 
-</head>
-<body>
+    <!-- ! Tag Creator -->
+    <div class="containercreatetags" id="crtagcont">
+      <input
+        class="inputcreatetags"
+        id="inputtags"
+        placeholder="Créez votre tag!"
+      />
+      <div class="containertagslist" id="containertags"></div>
+    </div>
 
-     <!-- ! NAVBAR -->
-     <nav>
-          <img class="logo" src="../img/flyingtodologo.png">
-          <button class="buttonadd" id="uploadbutton">+</button>
-          <button class="settingsbtn" id="settingsbtn">🔧</button>
-          <button class="createtagbtn" id="createtagbtn">#</button>
-     </nav>
+    <!-- ! Choice tag  -->
+    <div class="choicetagcont" id="choicetagcont">
+      <p class="titletag">Choose a tag</p>
+      <!-- <div class="tagtest">tagtest</div> -->
+    </div>
 
-     <!-- ! Tag Creator -->
-     <div class="containercreatetags" id="crtagcont">
-          <input class="inputcreatetags" id="inputtags" placeholder="Créez votre tag!">
-          <div class="containertagslist" id="containertags">
-          </div>
-     </div>
+    <!-- ! Main section  -->
+    <section class="containerimportanttodos">
+      <h1>Welcome on FlyingToDo !</h1>
+      <!-- ! Container PRETODO -->
+      <div class="containerx"></div>
 
-     <!-- ! Choice tag  -->
-     <div class="choicetagcont" id="choicetagcont">
-          <p class="titletag">Choose a tag</p>
-          <div class="tagtest">tagtest</div>
-     </div>
+      <!-- ! Container TODO -->
+      <div class="containertodo"></div>
+    </section>
 
+    <!-- ! Settings -->
+    <section class="settings">
+      <p class="retour">< Retour</p>
+      <h1>Select your own colors:</h1>
 
-     <!-- ! Main section  -->
-     <section>
-          <h1>Welcome on FlyingToDo !</h1>
-          <!-- ! Container PRETODO -->
-          <div class="containerx">
-          </div>
+      <div>
+        <label for="maincolorpick">Main Color - </label>
+        <input type="color" name="maincolorpick" class="maincolorpick" />
+      </div>
+      <div>
+        <label for="seccolorpick">Secondary Color - </label>
+        <input type="color" name="seccolorpick" class="seccolorpick" />
+      </div>
 
-          <!-- ! Container TODO -->
-          <div class="containertodo">
-          </div>
-     </section> 
+      <button class="resetclr">Reset Colors</button>
 
-     <!-- ! Settings -->
-     <section class="settings">
-          <p class="retour"> < Retour</p>
-          <h1>Select your own colors:</h1>
-          
-          <div>
-               <label for="maincolorpick">Main Color - </label>
-               <input type="color" name="maincolorpick" class="maincolorpick"> 
-          </div>
-          <div>
-               <label for="seccolorpick">Secondary Color - </label>         
-               <input type="color" name="seccolorpick" class="seccolorpick">
-          </div>
-          <div>
-               <label for="tagcolorpick">Tag Color - </label>
-               <input type="color" name="tagcolorpick" class="tagcolorpick">
-          </div>
-
-
-          <button class="resetclr">Reset Colors</button>
-          
-          <h1>Reset todos:</h1>
-          <button class="buttonreset" id="resetbtn">Reset</button>
-     </section>
-
-     
-     
-</body>
+      <h1>Reset todos:</h1>
+      <button class="buttonreset" id="resetbtn">Reset</button>
+    </section>
+  </body>
 </html>

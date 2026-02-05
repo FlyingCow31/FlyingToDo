@@ -1,18 +1,3 @@
-// TODO Rafraischissement de toutes les valeurs au démarrage 
-
-// TODO Fonctionnalité pour valider les todos et tags avec entrée 
-// TODO sauvegarde des données 
-
-// TODO fonction pour display les tags 
-// TODO Fonction pour créer les tags  
-// TODO Fonction pour supprimer les tags  
-// TODO Actualisation de la checkbox avec le style au démarrage et quand elles sont checked 
-// TODO Fonction pour actualiser les tags  
-// TODO Bouton pour tout reset  
-// TODO Fonctions de debug 
-// TODO Changement de couleur dans les settings  
-// TODO Logique de tous les boutons  
-
 
 
 let todos = [ ];
@@ -106,7 +91,7 @@ function displayTodo() {
                <img class="itemdel" data-id="${item.id}" src="../img/bin.png">
           </div>
           <div class="containertagsintodo">
-               
+               <button class="addtagbutton" data-id="${item.id}" id="addtagbutton">+</button>
           </div>`;
 
 
@@ -126,18 +111,39 @@ function displayTodo() {
 
 
 
-          containertodo.prepend(divtodo)
+          containertodo.prepend(divtodo);
+
+          // * Display tags for this todo
+          const containertagsintodo = divtodo.querySelector('.containertagsintodo');
+          
+          item.todotag.forEach(tag => {
+               const tagDiv = document.createElement('div');
+               tagDiv.className = "tagtest";
+               tagDiv.style.backgroundColor = tag.color;
+               tagDiv.innerHTML = `<p class="removetagbtn" data-tag-id="${tag.id}">✖</p>${tag.name}`;
+               containertagsintodo.appendChild(tagDiv);
+
+               // Remove tag from todo
+               const removeTagBtn = tagDiv.querySelector('.removetagbtn');
+               removeTagBtn.addEventListener('click', () => {
+                    item.todotag = item.todotag.filter(t => t.id !== tag.id);
+                    localStorage.setItem('todoitems', JSON.stringify(todos));
+                    displayTodo();
+               });
+          });
 
 
 
-
-
-          // * Add tag btn in each div
-          displayTagsInTodo(item, divtodo);
 
           const bintodo = document.querySelector('.itemdel');
           bintodo.addEventListener('click', () => {
                deleteTodo(item.id);
+          });
+
+          const addtagbutton = document.getElementById('addtagbutton');
+
+          addtagbutton.addEventListener('click', () => {
+               choiceTagg(item.id);
           });
      
      });
@@ -158,14 +164,11 @@ function deleteTodo(id) {
      });
      localStorage.setItem('todoitems', JSON.stringify(todos));
      displayTodo();
-
 };
 
 
 
 // * Tags 
-
-
 
 // * Tag creation && storage
 
@@ -246,77 +249,101 @@ function deleteTags(id) {
 };
 
 
-const choicetagcont = document.querySelector('.choicetagcont');
 
-function applyTags(item, divtodo) {
-     let titletag = document.createElement('p');
-     titletag.innerText = "Choose a tag !"
-     titletag.className = "titletag";
-     choicetagcont.prepend(titletag);
-
+// * Choice of tags 
+function choiceTagg(todoId) {
+     
+     choiceTag.classList.toggle('active');
 
      allTags.forEach(tag => {
+          taginchoice = document.createElement('div');
 
-          const tagInList = document.createElement('div');
+          taginchoice.className = "tagtest";
+          taginchoice.innerText = `${tag.name}`;
+          taginchoice.style.backgroundColor = `${tag.color}`;
 
-          tagInList.className = "tagtest";
-          tagInList.innerHTML = `<p>${tag.name}</p>`
-          tagInList.style.backgroundColor = `${tag.color}`;
-          tagInList.style.cursor = "pointer";
+          choiceTag.append(taginchoice);
 
-          choicetagcont.append(tagInList);
-
-          tagInList.addEventListener('click', () => {
-               !item.todotag ? "" : item.todotag = [];
-
-               if (!item.todotag.some(t => t.name === tag.name)) {
-
-                    item.todotag.push(tag);
-
-                    localStorage.setItem('todoitems', JSON.stringify(todos));
-                    console.log(item);
-                    displayTagsInTodo(item, divtodo);
-                    choiceTag.classList.remove('active');
-               };
+          taginchoice.addEventListener('click', () => {
+               addTagToTodo(tag, todoId);
           });
-          
      });
+};
+
+function addTagToTodo(tag, todoId) {
+     const todo = todos.find(item => item.id === todoId);
+     
+     if (todo && !todo.todotag.some(t => t.id === tag.id)) {
+          todo.todotag.push(tag);
+          localStorage.setItem('todoitems', JSON.stringify(todos));
+          displayTodo();
+          choiceTag.classList.remove('active');
+          choiceTag.innerHTML = '';
+     };
 };
 
 
 
-function displayTagsInTodo(item, divtodo) {
+// * Style features to make the app more fluid 
+document.addEventListener('click', (event) => {
+     const addtagbutton = document.querySelector('.addtagbutton');
 
-     const containertagsintodo = divtodo.querySelector('.containertagsintodo');
-     containertagsintodo.innerHTML = `<button class="addtagbutton" data-id="${item.id}" id="addtagbutton">+</button>`;
-     const addTagButton = divtodo.querySelector('.addtagbutton');
+     if (!choiceTag.contains(event.target) && !addtagbutton.contains(event.target) ) {
+          choiceTag.classList.remove('active');
+     };
+});
+
+
+
+
+
+// * Reset buttons
+const resetbtn = document.getElementById('resetbtn');
+
+resetbtn.addEventListener('click', () => {
+
+     todos = [];
+     allTags = [];
+     localStorage.setItem('todoitems', JSON.stringify(todos));
+     localStorage.setItem('alltags', JSON.stringify(allTags));
+
+     containerpretodo.innerHTML = '';
+
+     displayTodo();
+     displayTags();
+
+});
+
+
+
+// * Color in settings
+const root = document.documentElement;
+const inputmaincolor = document.querySelector('.maincolorpick');
+const inputseccolor = document.querySelector('.seccolorpick');
+const resetcolbtn = document.querySelector('.resetclr');
+
+// main color
+inputmaincolor.addEventListener('change', () => {
+     const mainvalue = inputmaincolor.value;
+     root.style.setProperty('--color-main', mainvalue);
      
+     console.log(inputmaincolor.value);
+     localStorage.setItem('maincolor', mainvalue);
+});
 
-     let isChoiceTagOpen = false;
+// secondary color
+inputseccolor.addEventListener('change', () => {
+     const seccolor = inputseccolor.value;
+     root.style.setProperty('--color-sec', seccolor);
      
-     
-     
-     addTagButton.addEventListener('click', () => {
-          if (isChoiceTagOpen == false) {
-               console.log('open');
-               isChoiceTagOpen = true;
-               choiceTag.classList.add('active');
+     console.log(seccolor);
+     localStorage.setItem('seccolor', seccolor);
+});
 
-               applyTags(item, divtodo);
-
-          } else {
-               console.log('closed');
-               isChoiceTagOpen = false;
-               choiceTag.classList.remove('active');
-          };
-     });
-     // ! ça duplique dans la liste et ça l'applique uniquement au premier 
-     item.todotag.forEach(tag => {
-          let tagInTodo = document.createElement('div');
-          tagInTodo.className = "tagtest";
-          tagInTodo.innerText = `${tag.name}`;
-          tagInTodo.style.backgroundColor = `${tag.color}`;
-
-          containertagsintodo.append(tagInTodo);
-     });
-};
+// reset color button 
+resetcolbtn.addEventListener('click', () => {
+     root.style.setProperty('--color-main', 'rgb(177, 177, 147)');
+     root.style.setProperty('--color-sec', 'rgb(231, 231, 217)');
+     localStorage.removeItem('seccolor');
+     localStorage.removeItem('maincolor');
+});
