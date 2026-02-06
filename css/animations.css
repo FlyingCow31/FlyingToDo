@@ -40,3 +40,14 @@
      left: 300px;
      transition: all 0.1s linear;
 }
+
+
+
+
+/** Note Text area  */
+.closenotebutton:hover {
+     background-color: rgba(0, 0, 0, 0.055);
+}
+.editorcontainer.active {
+     display: flex;
+}

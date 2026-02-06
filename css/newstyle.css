@@ -151,6 +151,11 @@ section h1 {
      font-size: 3rem;
 }
 
+.containerimportanttodos {
+     overflow-y: auto;
+     overflow-x: hidden;
+     height: 100vh;
+}
 
 /** PRETODO container*/
 .containerx {
@@ -160,6 +165,7 @@ section h1 {
      height: 10%;
      width: 100%;
      margin-bottom: 0px;
+     margin-left: 1%;
 
 }
 .pretodo {
@@ -207,29 +213,28 @@ section h1 {
 .containertodo {
      display: flex;
      flex-direction: column;
-     max-height: calc(100vh - 200px);
 
      border-radius: 10px;
-     overflow-y: scroll;
+     overflow-y: visible;
      overflow-x: hidden;
 }
-.containertodo::-webkit-scrollbar {
+.containerimportanttodos::-webkit-scrollbar {
      width: 6px;
      /* Largeur de la scrollbar */
 }
 
-.containertodo::-webkit-scrollbar-track {
+.containerimportanttodos::-webkit-scrollbar-track {
      background: transparent;
      /* Fond transparent */
 }
 
-.containertodo::-webkit-scrollbar-thumb {
+.containerimportanttodos::-webkit-scrollbar-thumb {
      background: rgba(0, 0, 0, 0.2);
      /* Couleur semi-transparente */
      border-radius: 3px;
 }
 
-.containertodo::-webkit-scrollbar-thumb:hover {
+.containerimportanttodos::-webkit-scrollbar-thumb:hover {
      background: rgba(0, 0, 0, 0.4);
      /* Plus visible au hover */
 }
@@ -329,9 +334,10 @@ section h1 {
 .containernotes {
      width: 100%;
      gap: 10px;
-     margin-left: 20%;
+     margin-left: 0%;
      display: grid;
      grid-template-columns: 1fr 1fr 1fr;
+     margin-bottom: 20px;
 }
 .notebundle {
      display: flex;
@@ -350,7 +356,7 @@ section h1 {
      background-color: var(--color-main);
      padding: 5px;
      border-radius: 5px;
-     max-width: 40%;
+     max-width: fit-content;
      text-align: center;
 }
 .titlemain {
@@ -361,17 +367,17 @@ section h1 {
 
 
 .editorcontainer {
-     display: flex;
+     display: none;
      flex-direction: column;
-     
-
 
      background-color: var(--color-main);
+     border-radius: 15px;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.2);
 
      width: 70%;
      height: 70vh;
      position: absolute;
-     top: 25vh;
+     top: 15vh;
      left: 25vh;
 
      z-index: 100;
@@ -382,4 +388,20 @@ section h1 {
      display: flex;
      justify-content: space-between;
      padding: 20px;
+}
+.notetitleeditor {
+
+     width: 50%;
+     background-color: transparent;
+     border: none;
+}
+.notetitleeditor:focus {
+     text-decoration: underline 1px black;
+     outline: none;
+}
+.closenotebutton {
+     font-size: 2rem;
+     background-color: transparent;
+     border: 1px black solid;
+     border-radius: 5px;
 }

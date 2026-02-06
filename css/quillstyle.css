@@ -3,5 +3,10 @@
 
 }
 .ql-editor {
-     color: white;
+
+     border: none;
+}
+.ql-toolbar.ql-snow {
+     border: none !important;
+     border-bottom: 1px black solid !important;
 }

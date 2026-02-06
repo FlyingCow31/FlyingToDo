@@ -94,7 +94,7 @@ function displayTodo() {
                <img class="itemdel" data-id="${item.id}" src="../img/bin.png">
           </div>
           <div class="containertagsintodo">
-               <button class="addtagbutton" data-id="${item.id}" id="addtagbutton">+</button>
+               <button class="addtagbutton" data-id="${item.id}">+</button>
           </div>`;
 
 
@@ -138,14 +138,15 @@ function displayTodo() {
 
 
 
-          const bintodo = document.querySelector('.itemdel');
+          const bintodo = divtodo.querySelector('.itemdel'); 
+          const addtagbutton = divtodo.querySelector('.addtagbutton');
           bintodo.addEventListener('click', () => {
                deleteTodo(item.id);
           });
 
-          const addtagbutton = document.getElementById('addtagbutton');
 
-          addtagbutton.addEventListener('click', () => {
+          addtagbutton.addEventListener('click', (event) => {
+               event.stopPropagation();
                choiceTagg(item.id);
           });
      
@@ -255,7 +256,7 @@ function deleteTags(id) {
 
 // * Choice of tags 
 function choiceTagg(todoId) {
-     
+     choiceTag.innerHTML = "";
      choiceTag.classList.toggle('active');
 
      allTags.forEach(tag => {
@@ -290,9 +291,13 @@ function addTagToTodo(tag, todoId) {
 // * Style features to make the app more fluid 
 document.addEventListener('click', (event) => {
      const addtagbutton = document.querySelector('.addtagbutton');
+     if (choiceTag.classList.contains('active')) {
+          const addtagbutton = event.target.closest('.addtagbutton');
+          
 
-     if (!choiceTag.contains(event.target) && !addtagbutton.contains(event.target) ) {
-          choiceTag.classList.remove('active');
+          if (!choiceTag.contains(event.target) && !addtagbutton) {
+               choiceTag.classList.remove('active');
+          };
      };
 });
 
@@ -315,7 +320,6 @@ resetbtn.addEventListener('click', () => {
      displayTodo();
      displayTags();
      deleteAllNotes();
-
 });
 
 

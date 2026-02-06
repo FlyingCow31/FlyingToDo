@@ -11,7 +11,6 @@
     <script src="../script/newscript.js" defer></script>
     <script src="../script/buttons.js" defer></script>
     <script src="../script/notes.js" defer></script>
-    <script src="../script/texteditor.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,21 +63,7 @@
         <button class="addnotebtn" onclick="createNewNote()">New Note</button>
       </div>
 
-      <div class="containernotes" id="containernotes">
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-        <div class="notebutton">NoteName</div>
-      </div>
+      <div class="containernotes" id="containernotes"></div>
       <p class="titlemain">TODO</p>
       <!-- ! Container PRETODO -->
       <div class="containerx"></div>
@@ -108,10 +93,16 @@
     </section>
 
     <!-- ! Quill Editor -->
-    <div class="editorcontainer">
+    <div class="editorcontainer" id="animationnote">
       <div class="flexcontaineredit">
-        <input class="notetitleeditor" type="text" placeholder="Placeholder" />
-        <button class="closenotebutton">←</button>
+        <input
+          class="notetitleeditor"
+          id="titlenoteinput"
+          type="text"
+          placeholder="Placeholder"
+          maxlength="20"
+        />
+        <button class="closenotebutton" id="closenotebutton">←</button>
       </div>
       <div class="editor" id="editor">
         <p>Editor placeholder</p>

@@ -1,11 +1,17 @@
+
+const noteanimation = document.getElementById('animationnote');
+
+
+// * DB Initialisation
 const db = new Dexie("FlyingToDoDB");
 db.version(1).stores({
      notes: '++id, title'
 });
 
+//* Quill initialisation
 const quill = new Quill('#editor', {
      theme: 'snow',
-     placeholder: 'New Note',
+     placeholder: '"Creativity is just connecting things."',
      modules: {
           toolbar: [['bold', 'italic', 'underline'], [{'list': 'ordered'}, {'list': 'bullet'}]]
      }
@@ -22,6 +28,10 @@ async function loadNote(id) {
      if (note) {
           currentNoteId = id;
           quill.setContents(note.content);
+
+          document.getElementById('titlenoteinput').value = note.title;
+
+          noteanimation.classList.toggle('active');
      };
 };
 
@@ -43,12 +53,12 @@ quill.on('text-change', () => {
 
 // * Note creating 
 async function createNewNote() {
-     alert('Bouton cliqué!');
+
      const id = await db.notes.add( {
           title: "New Note",
           content: []
      });
-      await refreshNoteList();
+     await refreshNoteList();
      loadNote(id);
 };
 
@@ -78,4 +88,46 @@ async function refreshNoteList() {
      currentNoteId = null;
      quill.setContents([]);
      await refreshNoteList();
+};
+
+// * Closing editor with the button in the editor
+async function closeEditor() {
+     if (currentNoteId !== null) {
+          const finalContent = quill.getContents();
+          await db.notes.update(currentNoteId, {content: finalContent});   
+          console.log("Content saved manually!");
+          saveTitle(); 
+     }
+
+     noteanimation.classList.remove('active');
+
+     quill.setContents([]);
+     currentNoteId = null;
+
+     await refreshNoteList();
+};
+
+const closenotebutton = document.getElementById('closenotebutton');
+closenotebutton.addEventListener('click', () => {
+     closeEditor();
+});
+
+
+// * Title saving 
+const titleInput = document.getElementById('titlenoteinput');
+
+titleInput.addEventListener('keydown', async (event) => {
+     if (event.key == 'Enter'){
+         saveTitle(); 
+         await refreshNoteList();
+     };
+});
+
+async function saveTitle() {
+          if (!currentNoteId) return;
+
+          const modifiedTitle = titleInput.value;
+
+          await db.notes.update(currentNoteId, {title: modifiedTitle});
+          console.log('Title saved!');
 };
