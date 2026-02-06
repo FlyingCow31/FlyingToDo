@@ -2,7 +2,7 @@ name: Publish Release
 on:
   push:
     tags:
-      - 'v*' # Se déclenche quand tu pousses un tag comme v1.1.0
+      - 'v*'
 
 jobs:
   publish:
