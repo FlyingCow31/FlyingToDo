@@ -7,6 +7,8 @@ on:
 jobs:
   publish:
     runs-on: windows-latest
+    permissions: # INDISPENSABLE pour que GitHub puisse uploader les fichiers
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -15,11 +17,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Publish to GitHub Releases
-        run: npm run publish
+      - name: Build and Make (Electron Forge)
+        run: npm run make # On génère le .exe dans le dossier out/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Version ${{ github.ref_name }}
+          files: |
+            out/make/squirrel.windows/x64/*.exe
+            out/make/**/*.zip
+          fail_on_unmatched_files: true 
+          draft: false
+          prerelease: false
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          

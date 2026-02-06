@@ -1,6 +1,6 @@
 {
   "name": "flyingtodo",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A TODO list application to learn JS, that I will maybe continue later.",
   "main": "main.js",
   "scripts": {
