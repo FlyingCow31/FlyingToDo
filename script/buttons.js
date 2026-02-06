@@ -5,7 +5,7 @@ const settingsbtn = document.querySelector('.settingsbtn');
 const createTagbtn = document.querySelector('.createtagbtn');
 
 const createTagContainer = document.querySelector('.containercreatetags'); 
-const choiceTag = document.querySelector('.choicetagcont');
+
 const settings = document.querySelector('.settings');
 
 

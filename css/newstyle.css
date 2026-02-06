@@ -323,3 +323,63 @@ section h1 {
      margin: 0px;
 
 }
+
+
+/** Notes style  */
+.containernotes {
+     width: 100%;
+     gap: 10px;
+     margin-left: 20%;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+}
+.notebundle {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+     margin-bottom: 5%;
+}
+.addnotebtn {
+     background-color: var(--color-main);
+     padding: 5px;
+     border-radius: 5px;
+     border: none;
+     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+}
+.notebutton {
+     background-color: var(--color-main);
+     padding: 5px;
+     border-radius: 5px;
+     max-width: 40%;
+     text-align: center;
+}
+.titlemain {
+     margin: 0px;
+     font-size: 2rem;
+}
+
+
+
+.editorcontainer {
+     display: flex;
+     flex-direction: column;
+     
+
+
+     background-color: var(--color-main);
+
+     width: 70%;
+     height: 70vh;
+     position: absolute;
+     top: 25vh;
+     left: 25vh;
+
+     z-index: 100;
+}
+
+
+.flexcontaineredit {
+     display: flex;
+     justify-content: space-between;
+     padding: 20px;
+}

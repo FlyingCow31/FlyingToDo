@@ -1,4 +1,5 @@
 
+const choiceTag = document.querySelector('.choicetagcont');
 
 let todos = [ ];
 let allTags = [ ];
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
      console.log(allTags);
      console.log(todos);
+
+     refreshNoteList();
 
 });
 
@@ -311,6 +314,7 @@ resetbtn.addEventListener('click', () => {
 
      displayTodo();
      displayTags();
+     deleteAllNotes();
 
 });
 
