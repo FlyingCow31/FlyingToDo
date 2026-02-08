@@ -1,4 +1,8 @@
 /** Animations */
+@keyframes clickanim {
+     0%, 100% {scale: 1;}
+     50% {scale: 0.7;}
+}
 .choicetagcont.active {
      top: 0px;
      left: 270px;

@@ -3,7 +3,7 @@ const {app, BrowserWindow } = require('electron');
 const path = require('path');
 const { updateElectronApp } = require('update-electron-app');
 updateElectronApp();
-
+if (require('electron-squirrel-startup')) app.quit();
 
 
 function createWindow() {

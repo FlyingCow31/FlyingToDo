@@ -239,6 +239,12 @@ function displayTags() {
                console.log(`Suppression du Tag numéro ${iddutag}`);
                deleteTags(iddutag);
           });
+
+          tagcontainer.addEventListener('click', () => {
+               tag.color = randomColorTags();
+               console.log('Changed color of the tag!');
+               displayTags();
+          });
      });
 };
 

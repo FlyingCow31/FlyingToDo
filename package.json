@@ -1,6 +1,6 @@
 {
   "name": "flyingtodo",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A TODO list application to learn JS, that I will maybe continue later.",
   "main": "main.js",
   "scripts": {
@@ -48,7 +48,8 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "flyingtodo"
+            "name": "flyingtodo",
+            "icon": "img/iconeflyingtodo"
           }
         },
         {

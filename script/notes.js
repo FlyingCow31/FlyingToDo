@@ -74,11 +74,15 @@ async function refreshNoteList() {
      allNotes.forEach(note => {
           const notediv = document.createElement('div');
           notediv.className = "notebutton";
-          notediv.innerText = note.title;
+          notediv.innerHTML = `<p class="notedelbtn">X</p> <p class="notebtn"> ${note.title}`;
           notediv.setAttribute('data-id', note.id);
           notediv.onclick = () => loadNote(note.id);
 
           noteContainer.append(notediv); 
+
+          const notedelbtn = notediv.querySelector('.notedelbtn');
+
+          notedelbtn.onclick = () => removeNote(note.id, notediv)
      });
 };
 
@@ -130,4 +134,16 @@ async function saveTitle() {
 
           await db.notes.update(currentNoteId, {title: modifiedTitle});
           console.log('Title saved!');
+};
+
+
+// * Remove the note from the DB
+
+async function removeNote(noteID, notediv) {
+     try {
+          await db.notes.delete(noteID);
+          notediv.remove();
+     } catch (error){
+          console.log(`Erreur: ${error}`);
+     };
 };
