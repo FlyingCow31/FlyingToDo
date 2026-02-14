@@ -1,10 +1,12 @@
 .ql-container {
      border: none !important;
+     overflow-y: auto;
 
 }
 .ql-editor {
-
      border: none;
+     word-wrap: break-word;
+     overflow-wrap: break-word;
 }
 .ql-toolbar.ql-snow {
      border: none !important;

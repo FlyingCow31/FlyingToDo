@@ -244,6 +244,7 @@ function displayTags() {
                tag.color = randomColorTags();
                console.log('Changed color of the tag!');
                displayTags();
+               localStorage.setItem('alltags', JSON.stringify(allTags));
           });
      });
 };

@@ -81,7 +81,7 @@ async function refreshNoteList() {
           noteContainer.append(notediv); 
 
           const notedelbtn = notediv.querySelector('.notedelbtn');
-
+          
           notedelbtn.onclick = () => removeNote(note.id, notediv)
      });
 };
@@ -114,6 +114,12 @@ async function closeEditor() {
 const closenotebutton = document.getElementById('closenotebutton');
 closenotebutton.addEventListener('click', () => {
      closeEditor();
+});
+const editorcontainer = document.querySelector('.editorcontainer');
+const fullscreenote = document.querySelector('.fullscreenote');
+
+fullscreenote.addEventListener('click', () => {
+     editorcontainer.classList.toggle("big");
 });
 
 
