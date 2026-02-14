@@ -42,14 +42,15 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "asar": true
+        "asar": true,
+        "icon": "img/iconflyingtodovraie"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "flyingtodo",
-            "icon": "img/iconeflyingtodo"
+            "setupIcon": "img/iconflyingtodovraie.icon"
           }
         },
         {

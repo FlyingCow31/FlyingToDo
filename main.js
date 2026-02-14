@@ -5,11 +5,11 @@ const { updateElectronApp } = require('update-electron-app');
 updateElectronApp();
 if (require('electron-squirrel-startup')) app.quit();
 
-
+app.setAppUserModelId('flyingtodo');
 function createWindow() {
      const win = new BrowserWindow({
           title: 'FlyingTODO',
-          icon: path.join(__dirname, 'img/iconeflyingtodo.ico'),
+          icon: path.join(__dirname, 'img', 'iconflyingtodovraie.ico'),
           width: 800,
           height: 600,
           webPreferences: {
