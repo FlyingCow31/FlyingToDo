@@ -1,25 +1,86 @@
-# FlyingToDo
+<img width="1944" height="794" alt="flyingtodologo" src="https://github.com/user-attachments/assets/185454e0-56a5-4c65-b689-474b6c84ab55" align="center"/>
 
-A TODO list application which is the first of my own made desktop apps.
-The goal is to recreate all of the apps on my PC so that I can have a full owned PC without any exterior apps (except games of course...).
-This is an electron app, see release for the setup file.
+<h1 align="center">FlyingToDo</h1>
+<h3 align="center">Your best ally to fight against distractions</h3>
 
-If you have an idea of a feature, do not hesitate to post it !
-This was made using JS, HTML and CSS + Electron.
+<p align="center">
+A minimalist TODO list application, which aims to replace notion and its complicated features : open FlyingTodo, write a ToDo, close FlyingToDo, That's all. Really, that's all ! 
+</p>
 
-Features wanted:
+## Key Features
 
-- [x] To create elements using LocalStorage
-- [x] To delete elements using LocalStorage
-- [x] To be able to write a todo in each elements
-- [x] Element checking
-- [x] Good UI/UX
-- [x] For now, only one page
+* A minimalist app, easy to navigate.
+* One tab at a time: your brain stays focused.
+* Easy personalisation: Change the colours of the app based on your mood !
+* Easy organisation: You can add tags to your todos and change their colour!
+* Note taking: Create notes to keep longer texts in the app.
 
-Features ideas:
+### Readability
 
-- [x] To add tags
-- [ ] Make possible to change tag colors
-- [ ] Add a description to each TODO
-- [x] Refactor code
-- [ ] Have a custom logo
+FlyingTodo was made so that you don't get distracted when you go in the app that's supposed to boost your productivity. Notion and Obsidians are full of interesting features, but when you try to get on it, onboarding feels like ages, learning how to create pages/database is long, and creating and customizing your own little page takes you await from your productivity goals. FlyingToDo is simple, no configuration/account needed as it's local only, and you can customize it ! 
+
+|                   | FlyingToDo | Obsidian | Notion |
+| ----------------- | ---------- | -------- | ------ |
+| Personalization   | ✅          | ✅        | ✅      |
+| Simple Onboarding | ✅          | ❌        | ❌      |
+| Todos             | ✅          | ✅        | ✅      |
+| 10+ features      | ❌          | ✅        | ✅      |
+| PayWall           | ❌          | ✅        | ✅      |
+| Grandpa friendly  | ✅          | ❌        | ❌      |
+
+# Screenshots & Videos
+
+
+  <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/f22e933b-7574-455c-b41e-03c59351f61c" />
+  <img width="500" height="auto" alt="image" src="https://github.com/user-attachments/assets/6808ad67-e429-49be-972e-588803964afc" />
+
+<br>
+
+> Change tags color ! 
+![Recording 2026-02-08 185127tag](https://github.com/user-attachments/assets/78104b51-062d-43ee-80a7-6c56f9b26261)
+
+
+<br>
+# How to download ? 
+
+Step 1 - Go to release on your right and click on the file displayed there (it should be labeled "latest")
+Step 2 - Download the installer and open it 
+Step 3 - Windows defender will tell you the app is unsafe : I did not buy a licence (I'm poor), click on install anyway (more informations -> install anyway) 
+Step 4 - The installation is silent, you then have to search the app in your search bar and you can pin it to your taskbar ! 
+
+Solution N°2 - user friendly: 
+Step 1 - Go to [website still under construction]
+Step 2 - Download and lauch the file 
+Step 3 - Windows defender will tell you the app is unsafe : I did not buy a licence (I'm poor), click on install anyway (more informations -> install anyway) 
+Step 4 - The installation is silent, you then have to search the app in your search bar and you can pin it to your taskbar ! 
+
+
+## Project's roadmap
+
+- [x] The app has a ToDo List feature
+- [x] The app has a note taking feature
+- [ ] Projects feature: create a project with some informations and tracking elements to keep track of your progress
+- [ ] Optimization of the app
+- [ ] Have a custom Logo
+
+### Contributing 
+
+You're more than welcome to contribute, but you have to follow certain rules: 
+* Follow a clear and recognizable commit/push description pattern
+* Explain everything that you changed in the code
+* Open a new pull request with your changes, describing all the features implemented.
+
+### Versioning 
+
+| v | 1 | . | 4 | . | 3 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Denominator needed for electron** | Major changes, Lang. Change, New big feature, Tech change, change of focus | | New feature, Adding a new feature without changing the focus of the app (todo) | | Bugs, animations, small features, colour change, etc. |
+| **Ex.** | Changing to React,<br>Adding an AI that'll create your daily tasks | | Adding a "project" section | | Changing tags' colour, adding animation on buttons, adding a delete button on notes |
+
+
+
+### Licence 
+
+This project is under the MIT Licence - See the licence.md file for more informations. 
+
+Copyright (c) 2025 Gaël Tournier. 
