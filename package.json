@@ -50,7 +50,7 @@
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "flyingtodo",
-            "setupIcon": "img/iconflyingtodovraie.icon"
+            "setupIcon": "img/iconflyingtodovraie.ico"
           }
         },
         {
