@@ -8,22 +8,16 @@ const createTagContainer = document.querySelector('.containercreatetags');
 
 const settings = document.querySelector('.settings');
 
+const body = document.querySelector('.containerimportanttodos');
+
 
 // * Settings
-let isSettingsOpen = false;
 settingsbtn.addEventListener('click', () => {
+     settings.classList.toggle('active');
 
-     if (isSettingsOpen == false) {
-          isSettingsOpen = true;
-          settings.classList.add('active');
-     } else {
-          isSettingsOpen = false;
-          settings.classList.remove('active');
-     };
 });
 const retoursbtn = document.querySelector('.retour').addEventListener('click', () => {
-     isSettingsOpen = false;
-     settings.classList.remove('active');
+     settings.classList.toggle('active');
 });
 
 
@@ -31,15 +25,15 @@ const retoursbtn = document.querySelector('.retour').addEventListener('click', (
 let isCreateTagOpen = false;
 
 createTagbtn.addEventListener('click', () => {
-     
-     if (isCreateTagOpen == false) {
-          console.log('open');
-          isCreateTagOpen = true;
-          createTagContainer.classList.add('active');
-          isChoiceTagOpen = false;
-     } else {
-          console.log('closed');
-          isCreateTagOpen = false;
-          createTagContainer.classList.remove('active');
-     };
+     createTagContainer.classList.toggle('active');
+
 });
+
+
+// * Projects buttons 
+const projectsbtn = document.querySelector('.projetsbtn');
+let isprojectsopen = false;
+
+projectsbtn.addEventListener('click', () => {
+
+});  

@@ -3,14 +3,26 @@
      0%, 100% {scale: 1;}
      50% {scale: 0.7;}
 }
+
+/** Navbar animation*/
+nav:hover {
+     transform: translateX(270px);
+     transition: all 0.1s linear;
+}
+
+
+
+
 .choicetagcont.active {
      top: 0px;
-     left: 270px;
+     left: 0px;
+     z-index: 10;
      transition: all 0.1s linear;
 }
 .containercreatetags.active {
      top: 0px;
-     left: 270px;
+     left: 0px;
+     z-index: 10;
      transition: all 0.1s linear;
 }
 

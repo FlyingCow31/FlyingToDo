@@ -295,6 +295,7 @@ function addTagToTodo(tag, todoId) {
 
 
 
+
 // * Style features to make the app more fluid 
 document.addEventListener('click', (event) => {
      const addtagbutton = document.querySelector('.addtagbutton');
@@ -303,9 +304,18 @@ document.addEventListener('click', (event) => {
           
 
           if (!choiceTag.contains(event.target) && !addtagbutton) {
-               choiceTag.classList.remove('active');
+               choiceTag.classList.toggle('active');
           };
      };
+     // TODO Fix: appuyer sur les tags fait enlever le container
+     const insideCreate = event.target.closest('.containercreatetags');
+     if (createTagContainer.classList.contains('active')) {
+          if (!insideCreate && !createTagbtn.contains(event.target)) {
+               createTagContainer.classList.toggle('active');
+               console.log("outside of createTagbtn");
+          };
+     };
+
 });
 
 
