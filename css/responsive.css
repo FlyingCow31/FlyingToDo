@@ -1,7 +1,4 @@
-@media (min-width: 600px) and (max-width: 1200px){
-     .containerimportanttodos {
-          width: 100%;
-     }
+@media (min-width: 600px) and (max-width: 1200px) {
      .settings.active {
           top: 5%;
           left: 35%;
@@ -14,5 +11,10 @@
      }
      .containerimportanttodos h1 {
           width: 60%;
+     }
+}
+@media (min-width: 1201px) {
+     .containertodo {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
      }
 }

@@ -1,116 +1,117 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlyingToDo</title>
-    <link rel="stylesheet" href="../css/newstyle.css" />
-    <link rel="stylesheet" href="../css/animations.css" />
-    <link rel="stylesheet" href="../css/responsive.css" />
-    <link rel="stylesheet" href="../css/quillstyle.css" />
-    <script src="../script/newscript.js" defer></script>
-    <script src="../script/buttons.js" defer></script>
-    <script src="../script/notes.js" defer></script>
+     <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>FlyingToDo</title>
+          <link rel="stylesheet" href="../css/newstyle.css" />
+          <link rel="stylesheet" href="../css/animations.css" />
+          <link rel="stylesheet" href="../css/responsive.css" />
+          <link rel="stylesheet" href="../css/quillstyle.css" />
+          <script src="../script/newscript.js" defer></script>
+          <script src="../script/buttons.js" defer></script>
+          <script src="../script/notes.js" defer></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+               href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+               rel="stylesheet"
+          />
 
-    <link rel="icon" href="../img/iconflyingtodovraie.ico" />
+          <link rel="icon" href="../img/iconflyingtodovraie.ico" />
 
-    <!-- * Quill && Dexie.js Library-->
+          <!-- * Quill && Dexie.js Library-->
 
-    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
-    <link
-      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-  </head>
-  <body id="wholebody">
-    <!-- ! NAVBAR -->
-    <nav>
-      <img class="logo" src="../img/Logo_flying.png" />
-      <div class="containerbuttons">
-        <button class="buttonadd" id="uploadbutton">+</button>
-        <button class="settingsbtn" id="settingsbtn">🔧</button>
-        <button class="createtagbtn" id="createtagbtn">#</button>
-        <button class="projetsbtn">🚀 Projects</button>
-      </div>
-    </nav>
+          <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+          <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+          <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+     </head>
+     <body id="wholebody">
+          <!-- ! NAVBAR -->
+          <nav class="navbar">
+               <img class="logo" src="../img/Logo_flying.png" />
+               <div class="containerbuttons">
+                    <button class="buttonadd" id="uploadbutton">+</button>
+                    <button class="settingsbtn" id="settingsbtn">🔧</button>
+                    <button class="createtagbtn" id="createtagbtn">#</button>
+                    <button class="projetsbtn">🚀 Projects</button>
+               </div>
+               <img class="locknavbar" src="../img/icons/unlockedlock.svg" />
+          </nav>
 
-    <!-- ! Tag Creator -->
-    <div class="containercreatetags" id="crtagcont">
-      <input
-        class="inputcreatetags"
-        id="inputtags"
-        placeholder="Créez votre tag!"
-      />
-      <div class="containertagslist" id="containertags"></div>
-    </div>
+          <!-- ! Tag Creator -->
+          <div class="containercreatetags" id="crtagcont">
+               <input class="inputcreatetags" id="inputtags" placeholder="Créez votre tag!" />
+               <div class="containertagslist" id="containertags"></div>
+          </div>
 
-    <!-- ! Choice tag  -->
-    <div class="choicetagcont" id="choicetagcont">
-      <p class="titletag">Choose a tag</p>
-      <!-- <div class="tagtest">tagtest</div> -->
-    </div>
+          <!-- ! Choice tag  -->
+          <div class="choicetagcont" id="choicetagcont">
+               <p class="titletag">Choose a tag</p>
+               <!-- <div class="tagtest">tagtest</div> -->
+          </div>
 
-    <!-- ! Main section  -->
-    <section class="containerimportanttodos">
-      <h1>Welcome on FlyingToDo !</h1>
-      <div class="notebundle">
-        <p class="titlemain">Notes</p>
-        <button class="addnotebtn" onclick="createNewNote()">New Note</button>
-      </div>
+          <!-- ! Main section  -->
+          <section class="containerimportanttodos">
+               <h1>Welcome on FlyingToDo !</h1>
+               <div class="notebundle">
+                    <p class="titlemain">Notes</p>
+                    <button class="addnotebtn" onclick="createNewNote()">New Note</button>
+               </div>
 
-      <div class="containernotes" id="containernotes"></div>
-      <p class="titlemain">TODO</p>
-      <!-- ! Container PRETODO -->
-      <div class="containerx"></div>
+               <div class="containernotes" id="containernotes"></div>
+               <p class="titlemain destodos">TODO</p>
+               <!-- ! Container PRETODO -->
+               <div class="containerx">
+                    <div class="pretodo" id="pretodo">
+                         <input type="checkbox" id="precheck" />
+                         <input class="iteminput" id="inputpretodo" placeholder="Entrez Votre Todo" />
+                         <img class="itemdel" src="../img/bin.png" id="binpretodo" />
+                    </div>
+                    <button id="validate" class="validate">✔️</button>
+               </div>
 
-      <!-- ! Container TODO -->
-      <div class="containertodo"></div>
-    </section>
+               <!-- ! Container TODO -->
+               <div class="containertodo"></div>
+          </section>
 
-    <!-- ! Settings -->
-    <section class="settings">
-      <p class="retour">< Retour</p>
-      <h1>Select your own colors:</h1>
+          <!-- ! Settings -->
+          <section class="settings">
+               <p class="retour">< Retour</p>
+               <h1>Select your own colors:</h1>
 
-      <div>
-        <label for="maincolorpick">Main Color - </label>
-        <input type="color" name="maincolorpick" class="maincolorpick" />
-      </div>
-      <div>
-        <label for="seccolorpick">Secondary Color - </label>
-        <input type="color" name="seccolorpick" class="seccolorpick" />
-      </div>
+               <div>
+                    <label for="maincolorpick">Main Color -</label>
+                    <input type="color" name="maincolorpick" class="maincolorpick" />
+               </div>
+               <div>
+                    <label for="seccolorpick">Secondary Color -</label>
+                    <input type="color" name="seccolorpick" class="seccolorpick" />
+               </div>
 
-      <button class="resetclr">Reset Colors</button>
+               <button class="resetclr">Reset Colors</button>
 
-      <h1>Reset todos:</h1>
-      <button class="buttonreset" id="resetbtn">Reset</button>
-    </section>
+               <h1>Reset todos:</h1>
+               <button class="buttonreset" id="resetbtn">Reset</button>
+          </section>
 
-    <!-- ! Quill Editor -->
-    <div class="editorcontainer" id="animationnote">
-      <div class="flexcontaineredit">
-        <input
-          class="notetitleeditor"
-          id="titlenoteinput"
-          type="text"
-          placeholder="Placeholder"
-          maxlength="20"
-        />
-        <button class="fullscreenote">⛶</button>
-        <button class="closenotebutton" id="closenotebutton">←</button>
-      </div>
-      <div class="editor" id="editor">
-        <p>Editor placeholder</p>
-      </div>
-    </div>
-  </body>
+          <!-- ! Quill Editor -->
+          <div class="editorcontainer" id="animationnote">
+               <div class="flexcontaineredit">
+                    <input
+                         class="notetitleeditor"
+                         id="titlenoteinput"
+                         type="text"
+                         placeholder="Placeholder"
+                         maxlength="20"
+                    />
+                    <button class="fullscreenote">⛶</button>
+                    <button class="closenotebutton" id="closenotebutton">←</button>
+               </div>
+               <div class="editor" id="editor">
+                    <p>Editor placeholder</p>
+               </div>
+          </div>
+     </body>
 </html>

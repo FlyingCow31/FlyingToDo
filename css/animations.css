@@ -1,7 +1,12 @@
 /** Animations */
 @keyframes clickanim {
-     0%, 100% {scale: 1;}
-     50% {scale: 0.7;}
+     0%,
+     100% {
+          scale: 1;
+     }
+     50% {
+          scale: 0.7;
+     }
 }
 
 /** Navbar animation*/
@@ -9,9 +14,6 @@ nav:hover {
      transform: translateX(270px);
      transition: all 0.1s linear;
 }
-
-
-
 
 .choicetagcont.active {
      top: 0px;
@@ -25,7 +27,6 @@ nav:hover {
      z-index: 10;
      transition: all 0.1s linear;
 }
-
 
 .pretodo img:hover {
      transform: scale(1.1);
@@ -46,7 +47,8 @@ nav:hover {
      transition: all 0.1s linear;
 }
 
-.resetclr:hover, .buttonreset:hover {
+.resetclr:hover,
+.buttonreset:hover {
      background-color: rgb(252, 117, 117);
      color: black;
      transition: all 0.2s linear;
@@ -56,9 +58,6 @@ nav:hover {
      left: 300px;
      transition: all 0.1s linear;
 }
-
-
-
 
 /** Note Text area  */
 .closenotebutton:hover {

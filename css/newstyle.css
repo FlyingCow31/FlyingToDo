@@ -1,6 +1,5 @@
-
 :root {
-     --font-main: 'Inter', sans-serif;
+     --font-main: "Inter", sans-serif;
      --color-main: rgb(177, 177, 147);
      --color-sec: rgb(231, 231, 217);
      --color-sec-hover: rgb(228, 228, 228);
@@ -19,11 +18,7 @@ body {
      overflow: hidden;
 }
 
-
-
-
 /** STYLE OF NAVBAR */
- 
 
 nav {
      position: absolute;
@@ -40,10 +35,16 @@ nav {
      background-color: var(--color-main);
      padding: 15px;
      padding-right: 30px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      z-index: 10;
 }
-
+nav.locked {
+     position: relative;
+     left: 0px;
+}
+nav.locked:hover {
+     transform: translateX(0px) !important;
+}
 nav img {
      width: 15em;
 }
@@ -56,13 +57,13 @@ nav button {
      outline: none;
      border: none;
      border-radius: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      cursor: pointer;
 }
 
 nav button:hover {
      transform: scale(1.1);
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.3);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.3);
      background-color: var(--color-sec-hover);
      transition: all 0.1s linear;
 }
@@ -81,34 +82,40 @@ nav button:active {
      flex: 1;
 }
 
+.locknavbar {
+     height: 20px;
+     width: auto;
+     align-self: flex-end;
+     margin: auto 0 30px 0;
+     cursor: pointer;
+}
 
 /** Style of Tag Creation*/
 
-.containercreatetags, .choicetagcont {
+.containercreatetags,
+.choicetagcont {
      height: 100vh;
      display: flex;
      flex-direction: column;
      padding: 15px;
      background-color: var(--color-main);
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      align-items: center;
-
 }
 .containercreatetags input {
      background-color: var(--color-sec);
      border: none;
      padding: 10px;
      border-radius: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      margin-bottom: 20px;
 }
 
 .containercreatetags input:focus {
      border: none;
      outline: none;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.6);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
 }
-
 
 /** Tags' style*/
 
@@ -137,7 +144,6 @@ nav button:active {
      transition: all 0.1s linear;
 }
 
-
 /** Style of Tag choice*/
 
 /* Container is up there*/
@@ -146,8 +152,7 @@ nav button:active {
      background-color: var(--color-sec);
      border-radius: 10px;
      padding: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
-     
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
 }
 
 /** Position of both  */
@@ -163,7 +168,6 @@ nav button:active {
      z-index: 10;
 }
 
-
 /** Main page*/
 
 section {
@@ -172,6 +176,7 @@ section {
 }
 section h1 {
      font-size: 3rem;
+     margin-bottom: 10px;
 }
 
 .containerimportanttodos {
@@ -180,28 +185,32 @@ section h1 {
      margin-left: 5%;
      height: 100vh;
 }
+.containerimportanttodos.locked {
+     margin-left: 2%;
+}
 
 /** PRETODO container*/
 .containerx {
-     display: flex;
+     display: none;
      align-items: center;
      gap: 15px;
      height: 10%;
-     width: 100%;
-     margin-bottom: 0px;
+     width: 60%;
+     margin-bottom: 20px;
      margin-left: 1%;
-
+}
+.containerx.active {
+     display: flex;
 }
 .pretodo {
-
      display: flex;
      gap: 10px;
      height: 50%;
      width: 100%;
      padding: 10px;
      background-color: var(--color-sec);
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.3);
-     border-radius: 15px;     
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.3);
+     border-radius: 15px;
      margin-bottom: 0px;
 }
 .pretodo img {
@@ -218,8 +227,7 @@ section h1 {
      background-color: var(--color-sec);
      border: none;
      border-radius: 10px;
-
-} 
+}
 .iteminput:focus {
      outline: none;
 }
@@ -235,23 +243,21 @@ section h1 {
      cursor: pointer;
 }
 
-
 /* * TODOs style */
 .containertodo {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-     
+     display: grid;
+     grid-template-columns: repeat(2, minmax(0, 1fr));
+     gap: 25px;
      border-radius: 10px;
-     overflow-y: hidden;
-     overflow-x: hidden;
-
+     overflow: hidden;
+     max-width: 95%;
+     padding-right: 10px;
 }
 /*Firefox config  */
 .containerimportanttodos {
+     width: 100%;
      scrollbar-width: thin;
      scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
-
 }
 
 .containerimportanttodos::-webkit-scrollbar {
@@ -276,11 +282,11 @@ section h1 {
 }
 
 .todo {
-
-/*TODO à changer l'ordre   */
      display: flex;
+     flex-direction: row;
      align-items: center;
      margin-bottom: 15px;
+     width: 100%;
 }
 .todo img {
      width: auto;
@@ -291,7 +297,20 @@ section h1 {
 .todo p {
      flex: 1;
 }
+.itemtext {
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     max-width: 100%;
+     cursor: pointer;
+     transition: all 0.3s ease;
+}
 
+.itemtext.expanded {
+     white-space: normal;
+     overflow-wrap: break-word;
+     max-width: 100%;
+}
 
 .containertagsintodo {
      display: flex;
@@ -300,7 +319,6 @@ section h1 {
      gap: 15px;
      padding-bottom: 15px;
      margin-left: 15px;
-
 }
 .containertagsintodo button {
      margin-top: 15px;
@@ -315,24 +333,22 @@ section h1 {
      background-color: white;
      padding: 10px;
      border-radius: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      margin-bottom: 15px;
      width: 95%;
 }
-
 
 /* * Settings  */
 .settings {
      z-index: 1;
      position: absolute;
      top: 25%;
-     left: -600px;
-     
+     left: -700px;
 
      background-color: var(--color-main);
      padding: 15px;
      border-radius: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
 }
 
 .settings p {
@@ -340,18 +356,19 @@ section h1 {
      width: fit-content;
      padding: 10px;
      border-radius: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      margin: 0px;
 }
 
-.resetclr, .buttonreset {
+.resetclr,
+.buttonreset {
      margin-top: 15px;
      color: red;
      background-color: var(--color-sec);
      border: none;
      padding: 10px;
      border-radius: 10px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
 }
 .buttonreset {
      margin: 0px;
@@ -363,9 +380,7 @@ section h1 {
      border: none;
      cursor: pointer;
      margin: 0px;
-
 }
-
 
 /** Notes style  */
 .containernotes {
@@ -381,15 +396,16 @@ section h1 {
      gap: 10px;
      align-items: center;
      margin-bottom: 5%;
+     margin-bottom: 0px;
 }
 .addnotebtn {
      background-color: var(--color-main);
      padding: 5px;
      border-radius: 5px;
      border: none;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.1);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      user-select: none;
-          cursor: pointer;
+     cursor: pointer;
 }
 .addnotebtn:active {
      animation: clickanim 0.6s linear;
@@ -400,14 +416,15 @@ section h1 {
      border-radius: 5px;
      max-width: fit-content;
      text-align: center;
-     
 }
 .titlemain {
      margin: 0px;
      font-size: 2rem;
+     margin-bottom: 0px;
 }
-
-
+.titlemain.destodos {
+     margin-bottom: 20px !important;
+}
 
 .editorcontainer {
      display: none;
@@ -415,7 +432,7 @@ section h1 {
 
      background-color: var(--color-main);
      border-radius: 15px;
-     box-shadow: 1px 1px 6px rgb(0,0,0,0.2);
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.2);
 
      width: 70%;
      height: 70vh;
@@ -433,7 +450,6 @@ section h1 {
      height: 100%;
      transition: all 0.2s linear;
 }
-
 
 .flexcontaineredit {
      display: flex;
@@ -462,13 +478,14 @@ section h1 {
 .notebutton {
      display: flex;
      align-items: center;
+     width: fit-content;
      gap: 10px;
      margin: 0px;
+
      user-select: none;
      cursor: pointer;
 }
 .notedelbtn {
-
      margin: 0px;
      padding: 3px;
      border: 1px solid var(--color-main);
