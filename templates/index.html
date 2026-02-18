@@ -8,9 +8,11 @@
           <link rel="stylesheet" href="../css/animations.css" />
           <link rel="stylesheet" href="../css/responsive.css" />
           <link rel="stylesheet" href="../css/quillstyle.css" />
+          <link rel="stylesheet" href="../css/projects.css" />
+
           <script src="../script/newscript.js" defer></script>
           <script src="../script/buttons.js" defer></script>
-          <script src="../script/notes.js" defer></script>
+          <script src="../script/complex.js" defer></script>
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -113,5 +115,32 @@
                     <p>Editor placeholder</p>
                </div>
           </div>
+
+          <!-- ! Projects PopUp -->
+          <div class="projectspopup">
+               <div class="grouptitle">
+                    <h1>Projects Hub</h1>
+                    <button class="newproject">New Project</button>
+               </div>
+
+               <div class="projectsgrid"></div>
+          </div>
+          <!-- ! Onboarding  -->
+          <div class="projectonboarding">
+               <div class="emoji onbemojis">
+                    <input type="text" class="emojisinput" id="emojionboarding" />
+                    <label for="emojionboarding">🚀</label>
+
+                    <input type="text" maxlength="15" class="onboardingtitle" placeholder="Enter a Title" />
+               </div>
+               <input type="text" class="onboardingdesc" placeholder="A short description" maxlength="30" />
+               <div class="buttonscontainer">
+                    <button class="backprojects">< Retour</button>
+                    <button class="submitonboarding">Create Project</button>
+               </div>
+          </div>
+
+          <!-- ! Project Page -->
+          <div class="projectcontainer" id="projcont"></div>
      </body>
 </html>

@@ -66,3 +66,10 @@ nav:hover {
 .editorcontainer.active {
      display: flex;
 }
+
+/** Projects  */
+.grouptitle button:hover {
+     transform: scale(1.1);
+     background-color: var(--color-sec-hover);
+     transition: all 0.1s linear;
+}

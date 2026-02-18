@@ -1,0 +1,188 @@
+/*! Projects  */
+
+/** Pop up*/
+.projectspopup {
+     visibility: hidden;
+     opacity: 0;
+     pointer-events: none;
+
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+     background-color: var(--color-main);
+     height: 70%;
+     width: 70%;
+     padding: 40px;
+     padding-top: 0px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
+}
+.projectspopup.active {
+     visibility: visible;
+     opacity: 1;
+     pointer-events: auto;
+}
+.grouptitle {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 20px;
+}
+.grouptitle * {
+     margin: 10px 0 0 0;
+}
+.grouptitle button {
+     background-color: var(--color-sec);
+     border: none;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     padding: 10px;
+     font-weight: bold;
+     border-radius: 5px;
+}
+
+/** PopupCard Style  */
+.projectsgrid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 10px;
+}
+.project {
+     background-color: var(--color-sec);
+     display: flex;
+     flex-direction: column;
+}
+.emoji {
+     display: flex;
+     flex-direction: row;
+     gap: 10px;
+     align-items: center;
+     font-size: 1.5rem;
+}
+
+/** Onboarding  */
+.projectonboarding {
+     display: none;
+     flex-direction: column;
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+     height: 70%;
+     width: 70%;
+     background-color: var(--color-main);
+     padding: 40px;
+     padding-top: 0px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
+}
+.projectonboarding.active {
+     display: flex;
+}
+.onboardingtitle {
+     border: none;
+     border-bottom: 1px black solid;
+     background-color: var(--color-sec);
+     font-size: 1.5rem;
+     padding: 10px;
+     outline: none;
+}
+.onboardingdesc {
+     border: none;
+
+     background-color: var(--color-sec);
+     border-radius: 10px;
+     margin-top: 10px;
+     font-size: 1.5rem;
+     padding: 10px;
+     outline: none;
+}
+.onbemojis {
+     background-color: var(--color-sec);
+     border-radius: 10px;
+     margin-top: 10px;
+}
+#emojionboarding {
+     position: absolute;
+     left: -9999px;
+     background-color: red;
+}
+.submitonboarding {
+     max-width: 30%;
+     align-self: center;
+
+     background-color: var(--color-sec);
+     border: none;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     padding: 10px;
+     font-weight: bold;
+     border-radius: 10px;
+}
+
+.buttonscontainer {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+     gap: 30px;
+     margin-top: 30px;
+}
+.backprojects {
+     border: none;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     background-color: var(--color-sec);
+     padding: 10px;
+     border-radius: 10px;
+}
+/* * Project page */
+
+.projectcontainer {
+     display: none;
+     flex-direction: column;
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+     height: 70%;
+     width: 70%;
+     background-color: var(--color-main);
+     padding: 40px;
+     padding-top: 0px;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
+}
+.projectcontainer.active {
+     display: flex;
+}
+.inproject {
+     margin-bottom: 0px;
+}
+.descinproject {
+     margin-top: 0px;
+}
+.todoinprojects {
+     display: flex;
+     flex-direction: row;
+     gap: 10px;
+     width: fit-content;
+     height: fit-content;
+}
+.containertodoinproject {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 10px;
+     background-color: var(--color-sec);
+     padding: 10px;
+     border-radius: 10px;
+}
+.backproject {
+     margin-left: auto;
+     border: none;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
+     background-color: var(--color-sec);
+     padding: 10px;
+     border-radius: 10px;
+}
