@@ -12,6 +12,10 @@
      .containerimportanttodos h1 {
           width: 60%;
      }
+     .titleinproject,
+     .emojisinput {
+          font-size: 1rem;
+     }
 }
 @media (min-width: 1201px) {
      .containertodo {

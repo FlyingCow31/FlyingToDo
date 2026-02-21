@@ -162,11 +162,15 @@ createProjectBtn.addEventListener("click", () => {
      projectpopup.classList.toggle("active")
 })
 
+// ! Create the project in the database
 async function createProject() {
-     const emoji = document.getElementById("emojionboarding").value
-     const OnbTitle = document.querySelector(".onboardingtitle").value
-     const OnbDesc = document.querySelector(".onboardingdesc").value
-     console.log(emoji, OnbDesc, OnbTitle)
+     const inputemoji = document.getElementById("emojionboarding")
+     const inputTitleOnb = document.querySelector(".onboardingtitle")
+     const inputDescOnb = document.querySelector(".onboardingdesc")
+
+     const emoji = inputemoji.value || "🚀"
+     const OnbTitle = inputTitleOnb.value
+     const OnbDesc = inputDescOnb.value
 
      const id = await db.projects.add({
           emoji: emoji,
@@ -175,9 +179,15 @@ async function createProject() {
      })
      console.log("Project Created with ID:" + id)
 
-     refreshProjectList()
+     await refreshProjectList()
+
+     inputemoji.value = ""
+     inputTitleOnb.value = ""
+     inputDescOnb.value = ""
+     return id
 }
 
+// ! Display the project list when restarting
 async function refreshProjectList() {
      const allProjects = await db.projects.toArray()
      projectsContainer.innerHTML = ""
@@ -202,12 +212,15 @@ async function refreshProjectList() {
      })
 }
 
+// ! Function to clear the projects
 async function deleteAllProjects() {
      await db.projects.clear()
      await refreshProjectList()
 }
 
 const projectContainer = document.getElementById("projcont")
+
+// ! Function to display active project
 async function loadProject(id) {
      const project = await db.projects.get(id)
 
@@ -219,18 +232,64 @@ async function loadProject(id) {
                     <button class="backproject">< Retour</button>
                </div>
                <p class="descinproject">${project.description}</p>
-               <div class="containertodoinproject">
-                    <div class="todoinprojects">
-                         <input type="checkbox" />
-                         <p class="todoprojectname">TodoName</p>
+               <div class="newtodocontainer">
+                    <p>Todos:</p>
+                    <div class="addnewtodoinproject">
+                         <input type="checkbox" class="checknewtodo" />
+                         <input type="text" maxlength="20" placeholder="New ToDo" class="newtodoinput" />
                     </div>
                </div>
+               <div class="containertodoinproject">
+               </div>
           `
+
+          createTodoInDOM(id)
+
           projectContainer.classList.toggle("active")
           projectpopup.classList.toggle("active")
-          const backproject = document.querySelector(".backproject").addEventListener("click", () => {
+
+          const backproject = document.querySelector(".backproject")
+
+          backproject.addEventListener("click", () => {
                projectContainer.classList.toggle("active")
                projectpopup.classList.toggle("active")
           })
+          // ! Get the value for the todo item
+          const newtodoinput = document.querySelector(".newtodoinput")
+
+          newtodoinput.addEventListener("keydown", (event) => {
+               if (event.key == "Enter") {
+                    createTodoInProject(id, newtodoinput.value)
+               }
+          })
      }
+}
+
+// ! Create the todo Item
+async function createTodoInProject(idProjet, text) {
+     await db.todosprojects.add({
+          projectId: idProjet,
+          text: text,
+          completed: false,
+     })
+     console.log("TODO added to project!")
+     createTodoInDOM(idProjet)
+}
+
+// ! Create the todo in DOM
+async function createTodoInDOM(id) {
+     const todos = await db.todosprojects.where("projectId").equals(id).toArray()
+     const containertodoproj = document.querySelector(".containertodoinproject")
+
+     containertodoproj.innerHTML = ""
+     todos.forEach((todo) => {
+          const divtodoinproject = document.createElement("div")
+          divtodoinproject.className = "todoinprojects"
+          divtodoinproject.innerHTML = `
+               <input type="checkbox" ${todo.completed ? "checked" : ""}/>
+               <p class="todoprojectname">${todo.text}</p>
+               `
+
+          containertodoproj.prepend(divtodoinproject)
+     })
 }

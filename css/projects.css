@@ -50,15 +50,25 @@
 }
 .project {
      background-color: var(--color-sec);
+     padding: 10px;
+     border-radius: 10px;
      display: flex;
      flex-direction: column;
 }
 .emoji {
+     font-weight: bold;
      display: flex;
      flex-direction: row;
      gap: 10px;
      align-items: center;
      font-size: 1.5rem;
+     margin: 0px;
+}
+.projectDesc {
+     margin-top: 0px;
+}
+.openproject {
+     margin-top: auto;
 }
 
 /** Onboarding  */
@@ -153,6 +163,7 @@
      padding-top: 0px;
      border-radius: 10px;
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
+     overflow-y: auto;
 }
 .projectcontainer.active {
      display: flex;
@@ -167,14 +178,15 @@
      display: flex;
      flex-direction: row;
      gap: 10px;
-     width: fit-content;
-     height: fit-content;
+
+     background-color: var(--color-sec);
+     padding: 10px;
+     border-radius: 10px;
 }
 .containertodoinproject {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 10px;
-     background-color: var(--color-sec);
      padding: 10px;
      border-radius: 10px;
 }
@@ -185,4 +197,29 @@
      background-color: var(--color-sec);
      padding: 10px;
      border-radius: 10px;
+}
+.tagtitle {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+}
+
+.newtodocontainer {
+     display: flex;
+     flex-direction: row;
+     gap: 10px;
+     align-items: center;
+}
+.newtodocontainer p {
+     font-size: 1.5rem;
+}
+.addnewtodoinproject {
+     background-color: var(--color-sec);
+     padding: 15px;
+     border-radius: 5px;
+}
+.newtodoinput {
+     border: none;
+     outline: none;
+     background-color: transparent;
 }
