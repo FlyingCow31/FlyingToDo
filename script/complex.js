@@ -205,6 +205,7 @@ async function refreshProjectList() {
 
                <p class="projectDesc">${project.description}</p>
                <button class="openproject">Open</button>
+               
           `
 
           projectsContainer.append(divproject)
@@ -228,10 +229,14 @@ async function loadProject(id) {
           projectContainer.innerHTML = `
                <div class="emoji inproject">
                     <p class="emojisinput">${project.emoji}</p>
-                    <h1 class="titleinproject">${project.name}</h1>
-                    <button class="backproject">< Retour</button>
+                    <input class="titleinproject" value="${project.name}" maxlength="15"></input>
+                    <div class="buttoncontainer">
+                         <button class="deleteproject">Delete</button>
+                         <button class="backproject">< Retour</button>
+                    </div>
+                    
                </div>
-               <p class="descinproject">${project.description}</p>
+               <input class="descinproject" value="${project.description}" maxlength="30"></input>
                <div class="newtodocontainer">
                     <p>Todos:</p>
                     <div class="addnewtodoinproject">
@@ -261,6 +266,24 @@ async function loadProject(id) {
                if (event.key == "Enter") {
                     createTodoInProject(id, newtodoinput.value)
                }
+          })
+
+          //! Project saving
+          const titleprojectinput = document.querySelector(".titleinproject")
+          const descprojectinput = document.querySelector(".descinproject")
+
+          titleprojectinput.addEventListener("keydown", (event) => {
+               if (event.key == "Enter") {
+                    modifyDataOfProject(id)
+               }
+          })
+          descprojectinput.addEventListener("keydown", (event) => {
+               if (event.key == "Enter") {
+                    modifyDataOfProject(id)
+               }
+          })
+          const deleteProjectButton = document.querySelector(".deleteproject").addEventListener("click", () => {
+               removeProject(id)
           })
      }
 }
@@ -292,4 +315,27 @@ async function createTodoInDOM(id) {
 
           containertodoproj.prepend(divtodoinproject)
      })
+}
+
+// ! Save Title + description in the project
+
+async function modifyDataOfProject(id) {
+     const newTitle = document.querySelector(".titleinproject").value
+     const newDesc = document.querySelector(".descinproject").value
+
+     await db.projects.update(id, { name: newTitle, description: newDesc })
+     refreshProjectList()
+}
+
+// ! Deletion
+
+async function removeProject(id) {
+     try {
+          await db.projects.delete(id)
+          projectContainer.classList.remove("active")
+          projectpopup.classList.toggle("active")
+          refreshProjectList()
+     } catch (error) {
+          console.log(`Erreur: ${error}`)
+     }
 }

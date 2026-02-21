@@ -47,6 +47,7 @@
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 10px;
+     margin-top: 30px;
 }
 .project {
      background-color: var(--color-sec);
@@ -69,6 +70,14 @@
 }
 .openproject {
      margin-top: auto;
+     background-color: var(--color-main);
+     color: whitesmoke;
+     padding: 5px;
+     width: 50%;
+     align-self: center;
+     border: none;
+     border-radius: 10px;
+     box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
 }
 
 /** Onboarding  */
@@ -171,8 +180,18 @@
 .inproject {
      margin-bottom: 0px;
 }
+.titleinproject {
+     background-color: transparent;
+     border: none;
+     outline: none;
+     cursor: pointer;
+}
 .descinproject {
      margin-top: 0px;
+     background-color: transparent;
+     border: none;
+     outline: none;
+     cursor: pointer;
 }
 .todoinprojects {
      display: flex;
@@ -190,14 +209,19 @@
      padding: 10px;
      border-radius: 10px;
 }
-.backproject {
+.buttoncontainer {
      margin-left: auto;
+}
+.deleteproject,
+.backproject {
+     margin-right: 10px;
      border: none;
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.1);
      background-color: var(--color-sec);
      padding: 10px;
      border-radius: 10px;
 }
+
 .tagtitle {
      display: flex;
      flex-direction: row;

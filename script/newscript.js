@@ -279,6 +279,15 @@ document.addEventListener("click", (event) => {
                console.log("outside of createTagbtn")
           }
      }
+
+     const ignorSelectors = [".projectspopup", ".projetsbtn", ".projectonboarding", ".projectcontainer"]
+
+     const clickignoredprojects = ignorSelectors.some((parents) => event.target.closest(parents))
+     if (!clickignoredprojects) {
+          document.querySelectorAll(".projectspopup, .projectonboarding, .projectcontainer").forEach((popup) => {
+               popup.classList.remove("active")
+          })
+     }
 })
 
 // * Reset buttons
