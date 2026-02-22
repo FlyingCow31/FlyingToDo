@@ -44,7 +44,7 @@
 
           <!-- ! Tag Creator -->
           <div class="containercreatetags" id="crtagcont">
-               <input class="inputcreatetags" id="inputtags" placeholder="Créez votre tag!" />
+               <input class="inputcreatetags" id="inputtags" placeholder="Create Your Tag!" maxlength="20" />
                <div class="containertagslist" id="containertags"></div>
           </div>
 
@@ -71,7 +71,6 @@
                          <input class="iteminput" id="inputpretodo" placeholder="Entrez Votre Todo" />
                          <img class="itemdel" src="../img/bin.png" id="binpretodo" />
                     </div>
-                    <button id="validate" class="validate">✔️</button>
                </div>
 
                <!-- ! Container TODO -->
@@ -128,12 +127,11 @@
           <!-- ! Onboarding  -->
           <div class="projectonboarding">
                <div class="emoji onbemojis">
-                    <input type="text" class="emojisinput" id="emojionboarding" />
-                    <label for="emojionboarding">🚀</label>
+                    <input type="text" class="emojisinput" id="emojionboarding" placeholder="🚀" />
 
                     <input type="text" maxlength="15" class="onboardingtitle" placeholder="Enter a Title" />
                </div>
-               <input type="text" class="onboardingdesc" placeholder="A short description" maxlength="30" />
+               <input type="text" class="onboardingdesc" placeholder="A short description" />
                <div class="buttonscontainer">
                     <button class="backprojects">< Retour</button>
                     <button class="submitonboarding">Create Project</button>

@@ -164,7 +164,14 @@ createProjectBtn.addEventListener("click", () => {
 
 // ! Create the project in the database
 async function createProject() {
+     // ! Onboarding emoji limit
      const inputemoji = document.getElementById("emojionboarding")
+
+     const char = [...inputemoji.value]
+     if (char.length > 1) {
+          inputemoji.value = char[0]
+     }
+
      const inputTitleOnb = document.querySelector(".onboardingtitle")
      const inputDescOnb = document.querySelector(".onboardingdesc")
 
@@ -236,7 +243,7 @@ async function loadProject(id) {
                     </div>
                     
                </div>
-               <input class="descinproject" value="${project.description}" maxlength="30"></input>
+               <input class="descinproject" value="${project.description}"></input>
                <div class="newtodocontainer">
                     <p>Todos:</p>
                     <div class="addnewtodoinproject">
@@ -309,10 +316,16 @@ async function createTodoInDOM(id) {
           const divtodoinproject = document.createElement("div")
           divtodoinproject.className = "todoinprojects"
           divtodoinproject.innerHTML = `
-               <input type="checkbox" ${todo.completed ? "checked" : ""}/>
+               <input type="checkbox" ${todo.completed ? "checked" : ""} class="checkInTodoProject"/>
                <p class="todoprojectname">${todo.text}</p>
                `
 
+          const checkbox = divtodoinproject.querySelector(".checkInTodoProject")
+          checkbox.addEventListener("change", () => {
+               db.todosprojects.delete(todo.id)
+               console.log("Todo deleted:", todo)
+               createTodoInDOM(id)
+          })
           containertodoproj.prepend(divtodoinproject)
      })
 }

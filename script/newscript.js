@@ -50,16 +50,11 @@ binpretodo.addEventListener("click", () => {
      containerpretodo.classList.remove("active")
 })
 
-const validatebtn = document.getElementById("validate")
-validatebtn.addEventListener("click", () => {
-     StoreTodo()
-     containerpretodo.classList.remove("active")
-})
 const iteminput = document.querySelector(".iteminput")
 
 // * Validation en appuyant sur entrée
 iteminput.addEventListener("keypress", (event) => {
-     event.key === "Enter" ? (StoreTodo(), containerpretodo.classList.remove("active")) : ""
+     event.key == "Enter" ? (StoreTodo(), containerpretodo.classList.remove("active")) : ""
 })
 
 // * TODO display
@@ -280,13 +275,22 @@ document.addEventListener("click", (event) => {
           }
      }
 
-     const ignorSelectors = [".projectspopup", ".projetsbtn", ".projectonboarding", ".projectcontainer"]
+     const ignorSelectors = [
+          ".projectspopup",
+          ".projetsbtn",
+          ".projectonboarding",
+          ".projectcontainer",
+          ".settings",
+          ".settingsbtn",
+     ]
 
      const clickignoredprojects = ignorSelectors.some((parents) => event.target.closest(parents))
      if (!clickignoredprojects) {
-          document.querySelectorAll(".projectspopup, .projectonboarding, .projectcontainer").forEach((popup) => {
-               popup.classList.remove("active")
-          })
+          document
+               .querySelectorAll(".projectspopup, .projectonboarding, .projectcontainer, .settings")
+               .forEach((popup) => {
+                    popup.classList.remove("active")
+               })
      }
 })
 
@@ -354,6 +358,7 @@ lockNav.addEventListener("click", () => {
           lockNav.src = "../img/icons/unlockedlock.svg"
           navbar.classList.remove("locked")
           body.classList.remove("locked")
+
           navlocked = false
      }
 })

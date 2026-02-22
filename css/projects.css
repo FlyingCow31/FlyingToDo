@@ -18,6 +18,7 @@
      padding-top: 0px;
      border-radius: 10px;
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
+     z-index: 100;
 }
 .projectspopup.active {
      visibility: visible;
@@ -55,6 +56,8 @@
      border-radius: 10px;
      display: flex;
      flex-direction: column;
+     overflow: hidden;
+     text-overflow: ellipsis;
 }
 .emoji {
      font-weight: bold;
@@ -67,6 +70,10 @@
 }
 .projectDesc {
      margin-top: 0px;
+     white-space: wrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     max-width: 40ch;
 }
 .openproject {
      margin-top: auto;
@@ -96,6 +103,7 @@
      padding-top: 0px;
      border-radius: 10px;
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
+     z-index: 101;
 }
 .projectonboarding.active {
      display: flex;
@@ -124,9 +132,12 @@
      margin-top: 10px;
 }
 #emojionboarding {
-     position: absolute;
-     left: -9999px;
-     background-color: red;
+     border: none;
+     background-color: transparent;
+     font-size: 1.5rem;
+     width: 50px;
+     text-align: center;
+     outline: none;
 }
 .submitonboarding {
      max-width: 30%;
@@ -173,11 +184,12 @@
      border-radius: 10px;
      box-shadow: 1px 1px 6px rgb(0, 0, 0, 0.6);
      overflow-y: auto;
+     z-index: 102;
 }
 .projectcontainer.active {
      display: flex;
 }
-.inproject {
+.emoji.inproject {
      margin-bottom: 0px;
 }
 .titleinproject {
@@ -185,6 +197,8 @@
      border: none;
      outline: none;
      cursor: pointer;
+     width: fit-content;
+     border-bottom: 1px black solid;
 }
 .descinproject {
      margin-top: 0px;
@@ -192,6 +206,8 @@
      border: none;
      outline: none;
      cursor: pointer;
+
+     border-bottom: 1px black solid;
 }
 .todoinprojects {
      display: flex;

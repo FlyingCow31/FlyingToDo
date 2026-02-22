@@ -166,7 +166,7 @@ nav button:active {
 .containercreatetags {
      position: absolute;
      top: 0px;
-     left: -210px;
+     left: -280px;
      z-index: 10;
 }
 
@@ -321,6 +321,8 @@ section h1 {
      gap: 15px;
      padding-bottom: 15px;
      margin-left: 15px;
+     flex-wrap: wrap;
+     max-width: 100%;
 }
 .containertagsintodo button {
      margin-top: 15px;
@@ -342,7 +344,7 @@ section h1 {
 
 /* * Settings  */
 .settings {
-     z-index: 1;
+     z-index: 105;
      position: absolute;
      top: 25%;
      left: -700px;
