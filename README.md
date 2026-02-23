@@ -1,4 +1,4 @@
-<img width="1944" height="794" alt="flyingtodologo" src="https://github.com/user-attachments/assets/185454e0-56a5-4c65-b689-474b6c84ab55" align="center"/>
+<img width="2605" height="819" alt="Logo_flying" src="https://github.com/user-attachments/assets/10f30c8c-2629-44b2-99ed-ceaf0b3c5bb3" align="center"/>
 
 <h1 align="center">FlyingToDo</h1>
 <h3 align="center">Your best ally to fight against distractions</h3>
