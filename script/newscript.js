@@ -296,8 +296,24 @@ document.addEventListener("click", (event) => {
 
 // * Reset buttons
 const resetbtn = document.getElementById("resetbtn")
-
+let resetClick = 0
 resetbtn.addEventListener("click", () => {
+     setTimeout(() => {
+          resetClick = 0
+          resetbtn.innerText = "Reset"
+     }, 6000)
+     console.log(resetClick)
+     resetClick++
+     if (resetClick == 1) {
+          resetbtn.innerText = "Confirm?"
+     }
+     if (resetClick == 2) {
+          resetEverything()
+          resetClick = 0
+          resetbtn.innerText = "Reset"
+     }
+})
+function resetEverything() {
      todos = []
      allTags = []
      localStorage.setItem("todoitems", JSON.stringify(todos))
@@ -309,8 +325,7 @@ resetbtn.addEventListener("click", () => {
      displayTags()
      deleteAllNotes()
      deleteAllProjects()
-})
-
+}
 // * Color in settings
 const root = document.documentElement
 const inputmaincolor = document.querySelector(".maincolorpick")
@@ -347,17 +362,20 @@ resetcolbtn.addEventListener("click", () => {
 let navlocked = false
 const lockNav = document.querySelector(".locknavbar")
 const navbar = document.querySelector(".navbar")
+const arrowIcon = document.querySelector(".doublearrownav")
 
 lockNav.addEventListener("click", () => {
      if (navlocked == false) {
           lockNav.src = "../img/icons/lockedlock.svg"
           body.classList.add("locked")
           navbar.classList.add("locked")
+          arrowIcon.classList.add("locked")
           navlocked = true
      } else {
           lockNav.src = "../img/icons/unlockedlock.svg"
           navbar.classList.remove("locked")
           body.classList.remove("locked")
+          arrowIcon.classList.remove("locked")
 
           navlocked = false
      }

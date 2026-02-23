@@ -36,6 +36,15 @@
           transform: scale(1.1);
      }
 }
+@keyframes bumpLeft {
+     0%,
+     100% {
+          transform: translateX(0px);
+     }
+     50% {
+          transform: translateX(20px);
+     }
+}
 
 /** Navbar animation*/
 nav:hover {
