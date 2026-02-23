@@ -1,78 +1,78 @@
 {
-  "name": "flyingtodo",
-  "version": "1.4.4",
-  "description": "A TODO list application to learn JS, that I will maybe continue later.",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FlyingCow31/FlyingToDo.git"
-  },
-  "keywords": [],
-  "author": "FlyingCow31",
-  "license": "MIT",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/FlyingCow31/FlyingToDo/issues"
-  },
-  "homepage": "https://github.com/FlyingCow31/FlyingToDo#readme",
-  "devDependencies": {
-    "@electron-forge/cli": "^7.10.2",
-    "@electron-forge/maker-deb": "^7.10.2",
-    "@electron-forge/maker-rpm": "^7.10.2",
-    "@electron-forge/maker-squirrel": "^7.10.2",
-    "@electron-forge/maker-zip": "^7.10.2",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.10.2",
-    "@electron-forge/plugin-fuses": "^7.10.2",
-    "@electron-forge/publisher-github": "^7.10.2",
-    "@electron/fuses": "^1.8.0",
-    "electron": "^39.2.7"
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.1",
-    "electron-store": "^11.0.2",
-    "update-electron-app": "^3.1.2"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "asar": true,
-        "icon": "img/iconflyingtodovraie"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "flyingtodo",
-            "setupIcon": "img/iconflyingtodovraie.ico"
+     "name": "flyingtodo",
+     "version": "1.5.0",
+     "description": "A TODO list application to learn JS, that I will maybe continue later.",
+     "main": "main.js",
+     "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "start": "electron-forge start",
+          "package": "electron-forge package",
+          "make": "electron-forge make",
+          "publish": "electron-forge publish"
+     },
+     "repository": {
+          "type": "git",
+          "url": "git+https://github.com/FlyingCow31/FlyingToDo.git"
+     },
+     "keywords": [],
+     "author": "FlyingCow31",
+     "license": "MIT",
+     "type": "commonjs",
+     "bugs": {
+          "url": "https://github.com/FlyingCow31/FlyingToDo/issues"
+     },
+     "homepage": "https://github.com/FlyingCow31/FlyingToDo#readme",
+     "devDependencies": {
+          "@electron-forge/cli": "^7.10.2",
+          "@electron-forge/maker-deb": "^7.10.2",
+          "@electron-forge/maker-rpm": "^7.10.2",
+          "@electron-forge/maker-squirrel": "^7.10.2",
+          "@electron-forge/maker-zip": "^7.10.2",
+          "@electron-forge/plugin-auto-unpack-natives": "^7.10.2",
+          "@electron-forge/plugin-fuses": "^7.10.2",
+          "@electron-forge/publisher-github": "^7.10.2",
+          "@electron/fuses": "^1.8.0",
+          "electron": "^39.2.7"
+     },
+     "dependencies": {
+          "electron-squirrel-startup": "^1.0.1",
+          "electron-store": "^11.0.2",
+          "update-electron-app": "^3.1.2"
+     },
+     "config": {
+          "forge": {
+               "packagerConfig": {
+                    "asar": true,
+                    "icon": "img/iconflyingtodovraie"
+               },
+               "makers": [
+                    {
+                         "name": "@electron-forge/maker-squirrel",
+                         "config": {
+                              "name": "flyingtodo",
+                              "setupIcon": "img/iconflyingtodovraie.ico"
+                         }
+                    },
+                    {
+                         "name": "@electron-forge/maker-zip",
+                         "platforms": [
+                              "win32"
+                         ]
+                    }
+               ],
+               "publishers": [
+                    {
+                         "name": "@electron-forge/publisher-github",
+                         "config": {
+                              "repository": {
+                                   "owner": "FlyingCow31",
+                                   "name": "FlyingToDo"
+                              },
+                              "prerelease": false,
+                              "draft": false
+                         }
+                    }
+               ]
           }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "win32"
-          ]
-        }
-      ],
-      "publishers": [
-        {
-          "name": "@electron-forge/publisher-github",
-          "config": {
-            "repository": {
-              "owner": "FlyingCow31",
-              "name": "FlyingToDo"
-            },
-            "prerelease": false,
-            "draft": false
-          }
-        }
-      ]
-    }
-  }
+     }
 }

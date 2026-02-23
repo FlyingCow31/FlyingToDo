@@ -8,6 +8,34 @@
           scale: 0.7;
      }
 }
+@keyframes buttonanim {
+     0% {
+          scale: 1;
+          background-color: var(--color-sec);
+     }
+     100% {
+          scale: 1.1;
+          background-color: var(--color-sec-hover);
+     }
+}
+@keyframes deletebuttonanim {
+     0% {
+          scale: 1;
+     }
+     100% {
+          background-color: rgb(252, 117, 117);
+          color: black;
+     }
+}
+@keyframes greenbuttonanim {
+     0% {
+          scale: 1;
+     }
+     100% {
+          background-color: rgb(127, 201, 127);
+          transform: scale(1.1);
+     }
+}
 
 /** Navbar animation*/
 nav:hover {
@@ -50,8 +78,7 @@ nav:hover {
 .resetclr:hover,
 .buttonreset:hover,
 .deleteproject:hover {
-     background-color: rgb(252, 117, 117);
-     color: black;
+     animation: deletebuttonanim 0.1s linear forwards;
      transition: all 0.2s linear;
      cursor: pointer;
 }
@@ -73,22 +100,17 @@ nav:hover {
 
 /** Projects  */
 .grouptitle button:hover {
-     transform: scale(1.1);
-     background-color: var(--color-sec-hover);
-     transition: all 0.1s linear;
+     animation: buttonanim 0.1s linear forwards;
 }
 .project:hover,
 .backproject:hover,
 .backprojects:hover {
-     transform: scale(1.1);
-     background-color: var(--color-sec-hover);
+     animation: buttonanim 0.1s linear forwards;
      transition: all 0.1s linear;
      cursor: pointer;
 }
 .openproject:hover {
-     transform: scale(1.1);
      cursor: pointer;
-     transition: all 0.1s linear;
 }
 .emojisinput {
      cursor: pointer;
@@ -97,8 +119,7 @@ nav:hover {
      cursor: pointer;
 }
 .submitonboarding:hover {
-     background-color: rgb(127, 201, 127);
-     transform: scale(1.1);
+     animation: greenbuttonanim 0.1s linear forwards;
      transition: all 0.1s linear;
      cursor: pointer;
 }

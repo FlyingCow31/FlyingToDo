@@ -263,3 +263,32 @@
      outline: none;
      background-color: transparent;
 }
+
+.progresscontainer {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+}
+.projectprogress {
+     width: 50%;
+     height: 20px;
+     border-radius: 10px;
+     background-color: var(--color-sec);
+     border: none;
+}
+
+.projectprogress::-webkit-progress-bar {
+     background-color: var(--color-sec);
+     border-radius: 10px;
+}
+
+.projectprogress::-webkit-progress-value {
+     background-color: green;
+     border-radius: 10px;
+}
+
+/* Firefox */
+.projectprogress::-moz-progress-bar {
+     background-color: green;
+     border-radius: 10px;
+}

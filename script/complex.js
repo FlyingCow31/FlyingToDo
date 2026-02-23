@@ -223,6 +223,7 @@ async function refreshProjectList() {
 // ! Function to clear the projects
 async function deleteAllProjects() {
      await db.projects.clear()
+     await db.todosprojects.clear()
      await refreshProjectList()
 }
 
@@ -236,14 +237,19 @@ async function loadProject(id) {
           projectContainer.innerHTML = `
                <div class="emoji inproject">
                     <p class="emojisinput">${project.emoji}</p>
-                    <input class="titleinproject" value="${project.name}" maxlength="15"></input>
+                    <input class="titleinproject" value="${project.name}" maxlength="15" />
                     <div class="buttoncontainer">
                          <button class="deleteproject">Delete</button>
                          <button class="backproject">< Retour</button>
                     </div>
-                    
                </div>
-               <input class="descinproject" value="${project.description}"></input>
+               <input class="descinproject" value="${project.description}" />
+               <div class="progresscontainer">
+                    <p>Project Progress:</p>
+                    <progress class="projectprogress" value="0" max="100"></progress>
+                    <p id="progresspercent">0%</p>
+               </div>
+
                <div class="newtodocontainer">
                     <p>Todos:</p>
                     <div class="addnewtodoinproject">
@@ -251,8 +257,7 @@ async function loadProject(id) {
                          <input type="text" maxlength="20" placeholder="New ToDo" class="newtodoinput" />
                     </div>
                </div>
-               <div class="containertodoinproject">
-               </div>
+               <div class="containertodoinproject"></div>
           `
 
           createTodoInDOM(id)
@@ -265,6 +270,7 @@ async function loadProject(id) {
           backproject.addEventListener("click", () => {
                projectContainer.classList.toggle("active")
                projectpopup.classList.toggle("active")
+               modifyDataOfProject(id)
           })
           // ! Get the value for the todo item
           const newtodoinput = document.querySelector(".newtodoinput")
@@ -319,15 +325,20 @@ async function createTodoInDOM(id) {
                <input type="checkbox" ${todo.completed ? "checked" : ""} class="checkInTodoProject"/>
                <p class="todoprojectname">${todo.text}</p>
                `
+          if (todo.completed == true) {
+               divtodoinproject.style.opacity = "0.6"
+               const todoprojectname = divtodoinproject.querySelector(".todoprojectname")
+               todoprojectname.style.textDecoration = "line-through"
+          }
 
           const checkbox = divtodoinproject.querySelector(".checkInTodoProject")
           checkbox.addEventListener("change", () => {
-               db.todosprojects.delete(todo.id)
-               console.log("Todo deleted:", todo)
+               db.todosprojects.update(todo.id, { completed: checkbox.checked })
                createTodoInDOM(id)
           })
           containertodoproj.prepend(divtodoinproject)
      })
+     ProgressBarCalculation(id)
 }
 
 // ! Save Title + description in the project
@@ -351,4 +362,24 @@ async function removeProject(id) {
      } catch (error) {
           console.log(`Erreur: ${error}`)
      }
+}
+
+// ! Percentage Calculation
+async function ProgressBarCalculation(id) {
+     const totalTodos = await db.todosprojects.where("projectId").equals(id).count()
+     let completedCount = await db.todosprojects
+          .where("projectId")
+          .equals(id)
+          .and((todo) => todo.completed === true)
+          .count()
+
+     let percentage = Math.round((completedCount / totalTodos) * 100)
+
+     const progressBar = document.querySelector(".projectprogress")
+     const progressText = document.getElementById("progresspercent")
+
+     progressBar.value = percentage
+     progressText.textContent = `${percentage}%`
+
+     console.log(percentage)
 }
