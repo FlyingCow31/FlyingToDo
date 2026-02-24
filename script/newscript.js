@@ -49,10 +49,13 @@ const binpretodo = document.getElementById("binpretodo")
 binpretodo.addEventListener("click", () => {
      containerpretodo.classList.remove("active")
 })
-
-const iteminput = document.querySelector(".iteminput")
+const newtodobtn = document.querySelector(".addtodobtn").addEventListener("click", () => {
+     containerpretodo.classList.toggle("active")
+})
 
 // * Validation en appuyant sur entrée
+const iteminput = document.querySelector(".iteminput")
+
 iteminput.addEventListener("keypress", (event) => {
      event.key == "Enter" ? (StoreTodo(), containerpretodo.classList.remove("active")) : ""
 })
@@ -256,7 +259,7 @@ function addTagToTodo(tag, todoId) {
      }
 }
 
-// * Style features to make the app more fluid
+// * Outside click to make the app fluid
 document.addEventListener("click", (event) => {
      const addtagbutton = document.querySelector(".addtagbutton")
      if (choiceTag.classList.contains("active")) {
@@ -282,12 +285,25 @@ document.addEventListener("click", (event) => {
           ".projectcontainer",
           ".settings",
           ".settingsbtn",
+          ".editorcontainer",
      ]
 
      const clickignoredprojects = ignorSelectors.some((parents) => event.target.closest(parents))
      if (!clickignoredprojects) {
+          const editorContainer = document.querySelector(".editorcontainer")
+
+          if (
+               event.target.classList.contains("blackbackground") ||
+               (event.target.closest(".navbar") && editorContainer.classList.contains("active"))
+          ) {
+               if (editorContainer && editorContainer.classList.contains("active")) {
+                    closeEditor()
+               }
+               blackBackground()
+          }
+
           document
-               .querySelectorAll(".projectspopup, .projectonboarding, .projectcontainer, .settings")
+               .querySelectorAll(".projectspopup, .projectonboarding, .projectcontainer, .settings, .editorcontainer")
                .forEach((popup) => {
                     popup.classList.remove("active")
                })

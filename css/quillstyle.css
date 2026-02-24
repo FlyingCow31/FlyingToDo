@@ -1,7 +1,9 @@
 .ql-container {
      border: none !important;
      overflow-y: auto;
-
+}
+.editor {
+     margin-top: 0px;
 }
 .ql-editor {
      border: none;

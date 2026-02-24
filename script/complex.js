@@ -36,6 +36,7 @@ async function loadNote(id) {
           document.getElementById("titlenoteinput").value = note.title
 
           noteanimation.classList.toggle("active")
+          blackBackground()
      }
 }
 
@@ -75,15 +76,31 @@ async function refreshNoteList() {
      allNotes.forEach((note) => {
           const notediv = document.createElement("div")
           notediv.className = "notebutton"
-          notediv.innerHTML = `<p class="notedelbtn">X</p> <p class="notebtn"> ${note.title}`
+          notediv.innerHTML = `<p class="notedelbtn">❌</p> <p class="notebtn"> ${note.title}`
+
+          const notebtn = notediv.querySelector(".notebtn")
           notediv.setAttribute("data-id", note.id)
-          notediv.onclick = () => loadNote(note.id)
+          notebtn.onclick = () => loadNote(note.id)
 
           noteContainer.append(notediv)
 
           const notedelbtn = notediv.querySelector(".notedelbtn")
-
-          notedelbtn.onclick = () => removeNote(note.id, notediv)
+          let delnotecount = 0
+          notedelbtn.addEventListener("click", () => {
+               setTimeout(() => {
+                    delnotecount = 0
+                    notedelbtn.innerText = "❌"
+               }, 6000)
+               delnotecount++
+               if (delnotecount == 1) {
+                    notedelbtn.innerText = "Confirm?"
+               }
+               if (delnotecount == 2) {
+                    removeNote(note.id, notediv)
+                    delnotecount = 0
+                    notedelbtn.innerText = "❌"
+               }
+          })
      })
 }
 
@@ -114,6 +131,7 @@ async function closeEditor() {
 const closenotebutton = document.getElementById("closenotebutton")
 closenotebutton.addEventListener("click", () => {
      closeEditor()
+     blackBackground()
 })
 const editorcontainer = document.querySelector(".editorcontainer")
 const fullscreenote = document.querySelector(".fullscreenote")
@@ -382,4 +400,16 @@ async function ProgressBarCalculation(id) {
      progressText.textContent = `${percentage}%`
 
      console.log(percentage)
+}
+
+// ! Background with no touch
+function blackBackground() {
+     const backgroundBlack = document.querySelector(".blackbackground")
+
+     if (backgroundBlack.classList.contains("active")) {
+          backgroundBlack.classList.remove("active")
+          console.log("Removed Background")
+     } else {
+          backgroundBlack.classList.toggle("active")
+     }
 }

@@ -18,6 +18,14 @@
           background-color: var(--color-sec-hover);
      }
 }
+@keyframes mainButtonAnim {
+     0% {
+          scale: 1;
+     }
+     100% {
+          scale: 1.1;
+     }
+}
 @keyframes deletebuttonanim {
      0% {
           scale: 1;
@@ -42,7 +50,7 @@
           transform: translateX(0px);
      }
      50% {
-          transform: translateX(20px);
+          transform: translateX(15px);
      }
 }
 
@@ -101,10 +109,15 @@ nav:hover {
 
 /** Note Text area  */
 .closenotebutton:hover {
+     opacity: 1;
      background-color: rgba(0, 0, 0, 0.055);
 }
 .editorcontainer.active {
      display: flex;
+}
+.fullscreenote:hover {
+     scale: 1.2;
+     transition: all 0.1s linear;
 }
 
 /** Projects  */
@@ -115,7 +128,6 @@ nav:hover {
 .backproject:hover,
 .backprojects:hover {
      animation: buttonanim 0.1s linear forwards;
-     transition: all 0.1s linear;
      cursor: pointer;
 }
 .openproject:hover {
@@ -142,4 +154,16 @@ nav:hover {
 .backprojects:active,
 .submitonboarding:active {
      animation: clickanim 0.2s linear;
+}
+
+/** Todo  */
+.addtodobtn:hover,
+.addnotebtn:hover {
+     animation: mainButtonAnim 0.1s linear forwards;
+     cursor: pointer;
+}
+.addtodobtn:active,
+.addnotebtn:active {
+     animation: clickanim 0.6s linear;
+     cursor: pointer;
 }

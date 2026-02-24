@@ -34,18 +34,19 @@
           <nav class="navbar">
                <img class="logo" src="../img/Logo_flying.png" />
                <div class="containerbuttons">
-                    <button class="buttonadd" id="uploadbutton">+</button>
+                    <button class="buttonadd" id="uploadbutton">➕</button>
                     <button class="settingsbtn" id="settingsbtn">🔧</button>
-                    <button class="createtagbtn" id="createtagbtn">#</button>
+                    <button class="createtagbtn" id="createtagbtn">🏷️</button>
                     <button class="projetsbtn">🚀 Projects</button>
                </div>
                <img class="locknavbar" src="../img/icons/unlockedlock.svg" />
           </nav>
-
+          <div class="blackbackground"></div>
           <p class="doublearrownav">&#187;</p>
           <!-- ! Tag Creator -->
           <div class="containercreatetags" id="crtagcont">
                <input class="inputcreatetags" id="inputtags" placeholder="Create Your Tag!" maxlength="20" />
+               <p class="enterText2">Tips: Press Enter to create your todo!</p>
                <div class="containertagslist" id="containertags"></div>
           </div>
 
@@ -58,13 +59,19 @@
           <!-- ! Main section  -->
           <section class="containerimportanttodos">
                <h1>Welcome on FlyingToDo !</h1>
+
                <div class="notebundle">
                     <p class="titlemain">Notes</p>
                     <button class="addnotebtn" onclick="createNewNote()">New Note</button>
                </div>
 
                <div class="containernotes" id="containernotes"></div>
-               <p class="titlemain destodos">TODO</p>
+
+               <div class="todobundle">
+                    <p class="titlemain destodos">TODO</p>
+                    <button class="addtodobtn">New Todo</button>
+               </div>
+
                <!-- ! Container PRETODO -->
                <div class="containerx">
                     <div class="pretodo" id="pretodo">
@@ -72,6 +79,7 @@
                          <input class="iteminput" id="inputpretodo" placeholder="Entrez Votre Todo" />
                          <img class="itemdel" src="../img/bin.png" id="binpretodo" />
                     </div>
+                    <p class="enterText">Tips: Press Enter to create your todo!</p>
                </div>
 
                <!-- ! Container TODO -->
@@ -109,7 +117,7 @@
                          maxlength="20"
                     />
                     <button class="fullscreenote">⛶</button>
-                    <button class="closenotebutton" id="closenotebutton">←</button>
+                    <button class="closenotebutton" id="closenotebutton">Back →</button>
                </div>
                <div class="editor" id="editor">
                     <p>Editor placeholder</p>
