@@ -5,7 +5,9 @@
      --color-sec-hover: rgb(228, 228, 228);
      --tag-color: #ffffff;
 }
-
+html {
+     overflow: hidden;
+}
 /** Basic padding/margin: 15px */
 
 body {
@@ -41,6 +43,8 @@ nav {
 nav.locked {
      position: relative;
      left: 0px;
+     padding-left: 15px;
+     margin-left: 0px;
 }
 nav.locked:hover {
      transform: translateX(0px) !important;
@@ -222,12 +226,9 @@ section h1 {
 .containerimportanttodos {
      overflow-y: auto;
      overflow-x: hidden;
-     margin-left: 2%;
      height: 100vh;
 }
-.containerimportanttodos.locked {
-     margin-left: 2%;
-}
+
 .todobundle {
      display: flex;
      gap: 10px;
@@ -313,7 +314,17 @@ section h1 {
      padding-right: 10px;
 }
 /*Firefox config  */
+.mainpagecontainer {
+     width: 100%;
+     height: calc(100vh - 20px);
+     max-height: 100vh;
+     overflow: hidden;
+     margin: 10px;
+     padding: 0px;
+}
+
 .containerimportanttodos {
+     margin: 0px;
      width: 100%;
      scrollbar-width: thin;
      scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
@@ -405,7 +416,7 @@ section h1 {
      z-index: 105;
      position: absolute;
      top: 25%;
-     left: -700px;
+     left: -1000px;
 
      background-color: var(--color-main);
      padding: 15px;

@@ -29,12 +29,12 @@
           <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
           <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
      </head>
-     <body id="wholebody">
+     <body class="containerimportanttodos">
           <!-- ! NAVBAR -->
           <nav class="navbar">
                <img class="logo" src="../img/Logo_flying.png" />
                <div class="containerbuttons">
-                    <button class="buttonadd" id="uploadbutton">➕</button>
+                    <button class="buttonadd" id="uploadbutton">✅</button>
                     <button class="settingsbtn" id="settingsbtn">🔧</button>
                     <button class="createtagbtn" id="createtagbtn">🏷️</button>
                     <button class="projetsbtn">🚀 Projects</button>
@@ -53,38 +53,10 @@
           <!-- ! Choice tag  -->
           <div class="choicetagcont" id="choicetagcont">
                <p class="titletag">Choose a tag</p>
-               <!-- <div class="tagtest">tagtest</div> -->
           </div>
 
           <!-- ! Main section  -->
-          <section class="containerimportanttodos">
-               <h1>Welcome on FlyingToDo !</h1>
-
-               <div class="notebundle">
-                    <p class="titlemain">Notes</p>
-                    <button class="addnotebtn" onclick="createNewNote()">New Note</button>
-               </div>
-
-               <div class="containernotes" id="containernotes"></div>
-
-               <div class="todobundle">
-                    <p class="titlemain destodos">TODO</p>
-                    <button class="addtodobtn">New Todo</button>
-               </div>
-
-               <!-- ! Container PRETODO -->
-               <div class="containerx">
-                    <div class="pretodo" id="pretodo">
-                         <input type="checkbox" id="precheck" />
-                         <input class="iteminput" id="inputpretodo" placeholder="Entrez Votre Todo" />
-                         <img class="itemdel" src="../img/bin.png" id="binpretodo" />
-                    </div>
-                    <p class="enterText">Tips: Press Enter to create your todo!</p>
-               </div>
-
-               <!-- ! Container TODO -->
-               <div class="containertodo"></div>
-          </section>
+          <section class="mainpagecontainer"></section>
 
           <!-- ! Settings -->
           <section class="settings">
@@ -124,15 +96,6 @@
                </div>
           </div>
 
-          <!-- ! Projects PopUp -->
-          <div class="projectspopup">
-               <div class="grouptitle">
-                    <h1>Projects Hub</h1>
-                    <button class="newproject">New Project</button>
-               </div>
-
-               <div class="projectsgrid"></div>
-          </div>
           <!-- ! Onboarding  -->
           <div class="projectonboarding">
                <div class="emoji onbemojis">
@@ -146,8 +109,5 @@
                     <button class="submitonboarding">Create Project</button>
                </div>
           </div>
-
-          <!-- ! Project Page -->
-          <div class="projectcontainer" id="projcont"></div>
      </body>
 </html>

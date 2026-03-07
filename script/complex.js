@@ -171,12 +171,24 @@ async function removeNote(noteID, notediv) {
 }
 
 // ! Projects
-const projectsContainer = document.querySelector(".projectsgrid")
+
 const createProjectBtn = document.querySelector(".submitonboarding")
+
+// * Initialisation of containers
+function getProjectGrid() {
+     return document.querySelector(".projectsgrid")
+}
+function getProjectContainer() {
+     return document.getElementById("projcont")
+}
+function getProjectPopup() {
+     return document.querySelector(".projectspopup")
+}
 
 createProjectBtn.addEventListener("click", () => {
      createProject()
      onboardingcont.classList.toggle("active")
+     const projectpopup = getProjectPopup()
      projectpopup.classList.toggle("active")
 })
 
@@ -215,6 +227,7 @@ async function createProject() {
 // ! Display the project list when restarting
 async function refreshProjectList() {
      const allProjects = await db.projects.toArray()
+     const projectsContainer = getProjectGrid()
      projectsContainer.innerHTML = ""
 
      allProjects.forEach((project) => {
@@ -245,11 +258,12 @@ async function deleteAllProjects() {
      await refreshProjectList()
 }
 
-const projectContainer = document.getElementById("projcont")
-
 // ! Function to display active project
 async function loadProject(id) {
      const project = await db.projects.get(id)
+     await loadPage("projectsingle")
+
+     const projectContainer = getProjectContainer()
 
      if (project) {
           projectContainer.innerHTML = `
@@ -280,14 +294,10 @@ async function loadProject(id) {
 
           createTodoInDOM(id)
 
-          projectContainer.classList.toggle("active")
-          projectpopup.classList.toggle("active")
-
           const backproject = document.querySelector(".backproject")
 
           backproject.addEventListener("click", () => {
-               projectContainer.classList.toggle("active")
-               projectpopup.classList.toggle("active")
+               loadPage("projects")
                modifyDataOfProject(id)
           })
           // ! Get the value for the todo item
@@ -296,6 +306,7 @@ async function loadProject(id) {
           newtodoinput.addEventListener("keydown", (event) => {
                if (event.key == "Enter") {
                     createTodoInProject(id, newtodoinput.value)
+                    newtodoinput.value = ""
                }
           })
 
@@ -313,9 +324,30 @@ async function loadProject(id) {
                     modifyDataOfProject(id)
                }
           })
-          const deleteProjectButton = document.querySelector(".deleteproject").addEventListener("click", () => {
-               removeProject(id)
+
+          let resetClickProjects = 0
+
+          const deleteProjectButton = document.querySelector(".deleteproject")
+
+          deleteProjectButton.addEventListener("click", () => {
+               setTimeout(() => {
+                    resetClickProjects = 0
+                    deleteProjectButton.innerText = "delete"
+               }, 6000)
+
+               resetClickProjects++
+
+               if (resetClickProjects == 1) {
+                    deleteProjectButton.innerText = "Confirm?"
+               }
+               if (resetClickProjects == 2) {
+                    removeProject(id)
+                    resetClickProjects = 0
+                    deleteProjectButton.innerText = "delete"
+               }
           })
+     } else {
+          console.log("Error: No projects")
      }
 }
 
@@ -342,6 +374,7 @@ async function createTodoInDOM(id) {
           divtodoinproject.innerHTML = `
                <input type="checkbox" ${todo.completed ? "checked" : ""} class="checkInTodoProject"/>
                <p class="todoprojectname">${todo.text}</p>
+               <button class="delprojectstodo">X</button>
                `
           if (todo.completed == true) {
                divtodoinproject.style.opacity = "0.6"
@@ -354,9 +387,22 @@ async function createTodoInDOM(id) {
                db.todosprojects.update(todo.id, { completed: checkbox.checked })
                createTodoInDOM(id)
           })
+          const deleteBTNtodo = divtodoinproject.querySelector(".delprojectstodo")
+          deleteBTNtodo.addEventListener("click", () => {
+               deleletTodoInProjects(todo.id, divtodoinproject)
+               ProgressBarCalculation(id)
+          })
+
           containertodoproj.prepend(divtodoinproject)
      })
      ProgressBarCalculation(id)
+}
+
+async function deleletTodoInProjects(todoID, element) {
+     await db.todosprojects.delete(todoID)
+     element.remove()
+
+     console.log("Todo successfully deleted!")
 }
 
 // ! Save Title + description in the project
@@ -374,8 +420,7 @@ async function modifyDataOfProject(id) {
 async function removeProject(id) {
      try {
           await db.projects.delete(id)
-          projectContainer.classList.remove("active")
-          projectpopup.classList.toggle("active")
+          await loadPage("projects")
           refreshProjectList()
      } catch (error) {
           console.log(`Erreur: ${error}`)
@@ -391,7 +436,7 @@ async function ProgressBarCalculation(id) {
           .and((todo) => todo.completed === true)
           .count()
 
-     let percentage = Math.round((completedCount / totalTodos) * 100)
+     let percentage = totalTodos ? Math.round((completedCount / totalTodos) * 100) : 0
 
      const progressBar = document.querySelector(".projectprogress")
      const progressText = document.getElementById("progresspercent")

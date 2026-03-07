@@ -7,8 +7,6 @@ const createTagContainer = document.querySelector(".containercreatetags")
 
 const settings = document.querySelector(".settings")
 
-const body = document.querySelector(".containerimportanttodos")
-
 // * Settings
 settingsbtn.addEventListener("click", () => {
      settings.classList.toggle("active")
@@ -26,21 +24,20 @@ createTagbtn.addEventListener("click", () => {
 
 // * Projects buttons
 const projectsbtn = document.querySelector(".projetsbtn")
-const projectpopup = document.querySelector(".projectspopup")
-const newproject = document.querySelector(".newproject")
+
+function getProjectPopup() {
+     return document.querySelector(".projectspopup")
+}
 const onboardingcont = document.querySelector(".projectonboarding")
 const backprojects = document.querySelector(".backprojects")
 const backproject = document.querySelector(".backproject")
 
 projectsbtn.addEventListener("click", () => {
-     projectpopup.classList.toggle("active")
-     refreshProjectList()
+     loadPage("projects")
 })
-newproject.addEventListener("click", () => {
-     onboardingcont.classList.toggle("active")
-     projectpopup.classList.toggle("active")
-})
+
 backprojects.addEventListener("click", () => {
+     const projectpopup = getProjectPopup()
      onboardingcont.classList.toggle("active")
      projectpopup.classList.toggle("active")
 })

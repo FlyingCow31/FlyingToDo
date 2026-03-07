@@ -3,22 +3,78 @@ const choiceTag = document.querySelector(".choicetagcont")
 let todos = []
 let allTags = []
 let windowWidth = window.innerWidth
+let containertodo
 
 // * Document Loading
 document.addEventListener("DOMContentLoaded", () => {
+     loadPage("mainpage")
+
      todos = JSON.parse(localStorage.getItem("todoitems")) || []
      allTags = JSON.parse(localStorage.getItem("alltags")) || []
-     displayTodo()
-     displayTags()
-
-     console.log(allTags)
-     console.log(todos)
-
-     refreshNoteList()
+})
+const addTodobtn = document.querySelector(".buttonadd")
+addTodobtn.addEventListener("click", () => {
+     loadPage("mainpage")
 })
 
+// * Page Loading behavior
+const containerMainPage = document.querySelector(".mainpagecontainer")
+
+async function loadPage(name) {
+     try {
+          const response = await fetch(`../templates/${name}.html`)
+
+          if (!response.ok) throw new Error("404 - Page Not Found!")
+
+          const text = await response.text()
+          containerMainPage.innerHTML = text
+          containerMainPage.scrollTop = 0
+
+          // ! Prevent assignation errors
+          if (name === "mainpage") {
+               const containerpretodo = document.querySelector(".containerx")
+
+               const binpretodo = document.getElementById("binpretodo")
+               const newtodobtn = document.querySelector(".addtodobtn")
+               const iteminput = document.querySelector(".iteminput")
+
+               containertodo = document.querySelector(".containertodo")
+               displayTodo()
+               displayTags()
+
+               console.log(allTags)
+               console.log(todos)
+
+               refreshNoteList()
+
+               // * PreTODO div
+               binpretodo.addEventListener("click", () => {
+                    containerpretodo.classList.remove("active")
+               })
+               newtodobtn.addEventListener("click", () => {
+                    containerpretodo.classList.toggle("active")
+               })
+
+               // * Validation en appuyant sur entrée
+               iteminput.addEventListener("keypress", (event) => {
+                    event.key == "Enter" ? (StoreTodo(), containerpretodo.classList.remove("active")) : ""
+               })
+          } else if (name === "projects") {
+               const newproject = document.querySelector(".newproject")
+               const projectpopup = getProjectPopup()
+               newproject.addEventListener("click", () => {
+                    onboardingcont.classList.toggle("active")
+                    projectpopup.classList.toggle("active")
+               })
+               await refreshProjectList()
+          }
+     } catch (error) {
+          containerMainPage.innerHTML = "<p> Error while loading the page, check the console for more infos</p>"
+          console.error(error)
+     }
+}
+
 // * Storage of TODOS
-const containerpretodo = document.querySelector(".containerx")
 
 function StoreTodo() {
      let inputElement = document.getElementById("inputpretodo")
@@ -40,28 +96,7 @@ function StoreTodo() {
      displayTodo()
 }
 
-// * Create the PreTODO div
-const addTodobtn = document.querySelector(".buttonadd")
-addTodobtn.addEventListener("click", () => {
-     containerpretodo.classList.toggle("active")
-})
-const binpretodo = document.getElementById("binpretodo")
-binpretodo.addEventListener("click", () => {
-     containerpretodo.classList.remove("active")
-})
-const newtodobtn = document.querySelector(".addtodobtn").addEventListener("click", () => {
-     containerpretodo.classList.toggle("active")
-})
-
-// * Validation en appuyant sur entrée
-const iteminput = document.querySelector(".iteminput")
-
-iteminput.addEventListener("keypress", (event) => {
-     event.key == "Enter" ? (StoreTodo(), containerpretodo.classList.remove("active")) : ""
-})
-
 // * TODO display
-const containertodo = document.querySelector(".containertodo")
 
 function displayTodo() {
      containertodo.innerHTML = ""
@@ -261,7 +296,6 @@ function addTagToTodo(tag, todoId) {
 
 // * Outside click to make the app fluid
 document.addEventListener("click", (event) => {
-     const addtagbutton = document.querySelector(".addtagbutton")
      if (choiceTag.classList.contains("active")) {
           const addtagbutton = event.target.closest(".addtagbutton")
 
@@ -310,7 +344,7 @@ document.addEventListener("click", (event) => {
      }
 })
 
-// * Reset buttons
+// * Reset button behavior
 const resetbtn = document.getElementById("resetbtn")
 let resetClick = 0
 resetbtn.addEventListener("click", () => {
@@ -334,8 +368,6 @@ function resetEverything() {
      allTags = []
      localStorage.setItem("todoitems", JSON.stringify(todos))
      localStorage.setItem("alltags", JSON.stringify(allTags))
-
-     containerpretodo.classList.remove("active")
 
      displayTodo()
      displayTags()
@@ -379,6 +411,7 @@ let navlocked = false
 const lockNav = document.querySelector(".locknavbar")
 const navbar = document.querySelector(".navbar")
 const arrowIcon = document.querySelector(".doublearrownav")
+const body = document.querySelector(".containerimportanttodos")
 
 lockNav.addEventListener("click", () => {
      if (navlocked == false) {
